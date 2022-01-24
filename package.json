@@ -1,0 +1,23 @@
+{
+  "name": "cege0043-apps-21-22-xiaofengt",
+  "version": "1.0.0",
+  "description": "Basic starter code for UCL module CEGE0043 app development - includes a basic HTTP server and one end point",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/ucl-geospatial-21-22/cege0043-apps-21-22-XiaofengT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ucl-geospatial-21-22/cege0043-apps-21-22-XiaofengT/issues"
+  },
+  "homepage": "https://github.com/ucl-geospatial-21-22/cege0043-apps-21-22-XiaofengT#readme"
+}
