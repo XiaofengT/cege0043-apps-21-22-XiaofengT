@@ -33,10 +33,11 @@ My GitHub username is: XiaofengT
 	<!-- the following script will load the map and set the default view and zoom, as well as loading the
 basemap tiles -->
 	<script>
-			// load the map
-			var mymap = L.map('mapid').setView([51.505, -0.09], 9);
+	// load the map
+	var mymap = L.map('mapid').setView([51.505, -0.09], 9);
 			
-			// load the tiles
+	// load the tiles
+	function loadLeafletMap(){
 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 maxZoom: 18,
 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -47,7 +48,14 @@ tileSize: 512,
 zoomOffset: -1
 
 	}).addTo(mymap);
+	
+		// now call the code to add the markers
+		addBasicMarkers();
+	
+	}//end code to add the leaflet map
+	
 	// add a point
+	function addBasicMarkers(){
 	L.circle([51.508, -0.11], 5000, {
 			color: 'green',
 			fillColor: '#f03',
@@ -66,6 +74,8 @@ zoomOffset: -1
 			fillColor: '#f03',
 			fillOpacity: 0.5
 	 }).addTo(mymap).bindPopup("I am a polygon in 2022.");
+	}// end code to add the basic markers
+
 </script>
 </body>
 </html>
