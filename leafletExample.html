@@ -58,6 +58,21 @@ zoomOffset: -1
 	// add a point
 	function addBasicMarkers(){
 	console.log("start of adding markers");
+	// create a geoJSON feature -
+	 var geojsonFeature = {
+	 "type": "Feature",
+	 "properties": {
+	 "name": "London",
+	 "popupContent": "This is where UCL is based. We have on campus and off campus activity."
+	 },
+	 "geometry": {
+	 "type": "Point",
+	 "coordinates": [-0.118092, 51.509865]
+	 }
+	};
+	 // and add it to the map
+	 L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+"
+	"+geojsonFeature.properties.popupContent+"<b>"); 
 	L.circle([51.508, -0.11], 5000, {
 			color: 'green',
 			fillColor: '#f03',
