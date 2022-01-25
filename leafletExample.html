@@ -64,9 +64,13 @@ mNqn2Wgg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1M
 
 	} // end of the getEarthquakeData function 
 	function removeEarthquakeData() {
-	 alert("remove the earthquake data here");
-	}
-
+	 try{
+		alert("remove the earthquake data here");
+		mymap.removeLayer(earthquakelayer);
+	 }catch(err){
+		alert("Layer doesn't exist:" + err);
+		}
+	} 
 </script>
 	 
 </head>
