@@ -71,8 +71,7 @@ zoomOffset: -1
 	 }
 	};
 	 // and add it to the map
-	 L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+"
-	"+geojsonFeature.properties.popupContent+"<b>"); 
+	 L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>"); 
 	L.circle([51.508, -0.11], 5000, {
 			color: 'green',
 			fillColor: '#f03',
