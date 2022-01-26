@@ -12,7 +12,6 @@
 	 }
 	// load the tiles
 	function loadLeafletMap(){
-	console.log("start of creating map");
 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 maxZoom: 18,
 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -23,7 +22,7 @@ tileSize: 512,
 zoomOffset: -1
 
 	}).addTo(mymap);
-	console.log("end of creating map");
+	
 		// now call the code to add the markers
 		addBasicMarkers();
 		// now add the click event detector to the map
@@ -32,7 +31,6 @@ zoomOffset: -1
 	
 	// add a point
 	function addBasicMarkers(){
-	console.log("start of adding markers");
 	
 	var testMarkerPink = L.AwesomeMarkers.icon({
 	 icon: 'play',
@@ -63,7 +61,6 @@ zoomOffset: -1
 			fillOpacity: 0.8
 	 }).addTo(mymap).bindPopup("I am a circle.");
 	 
-	 console.log("added a circle");
 	 // add a polygon with 3 end points (i.e. a triangle)
 	 var myPolygon = L.polygon([
 			[51.709, -0.10],
@@ -75,5 +72,4 @@ zoomOffset: -1
 			fillColor: '#f03',
 			fillOpacity: 0.5
 	 }).addTo(mymap).bindPopup("I am a polygon in 2022.");
-	console.log("added a polygon");
 	}// end code to add the basic markers

@@ -3,7 +3,7 @@ var busstopsLayer;
 function getBusStopsData() {
  var url = document.location.origin + "/app/data/busstops.geojson";
  $.ajax({url: url, crossDomain: true,success: function(result){
- console.log(result); // check that the data is correct
+ //console.log(result); // check that the data is correct
  var testMarkerRed = L.AwesomeMarkers.icon({
  icon: 'play',
  markerColor: 'red'
@@ -73,7 +73,6 @@ function getBusStopsData() {
  mymap.fitBounds(busstopsLayer.getBounds());
  } // end of the inner function
  }); // end of the ajax request
-
 } // end of the getBusStopsData function 
 function removeBusStopsData() {
  try{

@@ -3,7 +3,7 @@ var earthquakeLayer;
 function getEarthquakeData() {
  var layerURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson";
  $.ajax({url: layerURL, crossDomain: true,success: function(result){
- console.log(result); // check that the data is correct
+ //console.log(result); // check that the data is correct
  var testMarkerGreen = L.AwesomeMarkers.icon({
  icon: 'play',
  markerColor: 'green'
@@ -30,7 +30,7 @@ function getEarthquakeData() {
 {icon:testMarkerPink}).bindPopup("<b>"+feature.properties.place +"</b>");;
  }
  }, // end of point to layer
- }).addTo(mymap); 
+ }).addTo(mymap);
  // change the map zoom so that all the data is shown
  mymap.fitBounds(earthquakelayer.getBounds());
  } // end of the inner function

@@ -3,7 +3,7 @@ var ethernetLayer;
 function getEthernetData() {
  var url = document.location.origin + "/app/data/ethernet.geojson";
  $.ajax({url: url, dataType: 'json' ,success: function(result){
- console.log(result); // check that the data is correct
+ //console.log(result); // check that the data is correct
  var style1={
  "color": "#ea3008",
  "weight": 10,
@@ -25,7 +25,7 @@ function getEthernetData() {
  ethernetLayer.addData(result);
  // iterate over the lines and set style depending on district 
  ethernetLayer.eachLayer(function(layer) {
-	 console.log(layer);
+	 //console.log(layer);
 	 switch (layer.feature.properties.criticality) {
 		 case 2:
 			layer.setStyle(style1);
@@ -37,12 +37,10 @@ function getEthernetData() {
 			layer.setStyle(style3);
  }
  });
- 
  // change the map zoom so that all the data is shown
  mymap.fitBounds(ethernetLayer.getBounds());
  } // end of the inner function
  }); // end of the ajax request
-
 } // end of the getEthernetData function 
 function removeEthernetData() {
  try{
