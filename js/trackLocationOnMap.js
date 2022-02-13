@@ -26,6 +26,7 @@ function trackLocation(){
 	}
 }
 function showPosition(position){
+	removePositionPoints();
 	//add the new point into the array
 	trackLocationLayer.push(L.marker([position.coords.latitude,position.coords.longitude]).addTo(mymap));
 }
