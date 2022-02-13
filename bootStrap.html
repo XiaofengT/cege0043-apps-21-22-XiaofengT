@@ -1,0 +1,187 @@
+<DOCTYPE html>
+  <html lang="en">
+  <head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8">
+
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- the following links add the CSS and Javascript required for the Leaflet Map -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
+	integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+	crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
+	integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
+	crossorigin=""></script>
+	
+	<!-- custom fonts and styles for the bootstrap template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
+
+    <link href="css/sb-admin-2.css" type="text/css" rel="stylesheet">
+	<script src="js/menu.js"></script> 
+	<script
+	src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>  
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+	<script src="js/sb-admin-2.js"></script>
+	<script src="js/trackLocationOnMapBoot.js"></script>
+
+    <title>Bootstrap Simplified Template</title>
+    <!-- adapted from: https://blackrockdigital.github.io/startbootstrap-sb-admin-2/ -->
+
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+          <div class="sidebar-brand-text mx-3">XiaofengT</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item d-none d-lg-block" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu1()" aria-expanded="true" aria-controls="collapseOne">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Menu 1</span>
+          </a>
+
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Menu 2</span>
+          </a>
+          <div id="collapseThree" class="collapse navbar-collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu3()";>Menu 3</a>
+              <a class="collapse-item"  data-toggle="collapse" data-target=".navbar-collapse.show" href="#" 
+              onclick="menu4()">Menu 4</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Menu 5</span>
+          </a>
+          <div id="collapseTwo" class="collapse navbar-collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Menu 6</h6>
+              <a class="collapse-item"  data-toggle="collapse" data-target=".navbar-collapse.show" onclick="menu7()">Menu 7</a>
+            </div>
+          </div>
+        </li>
+
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Menu 8</span>
+          </a>
+          <div id="collapseFour" class="collapse navbar-collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu9()">Menu 9</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu10()">Menu 10</a>          </div>
+
+           </div>
+         </li>
+		
+		
+		<!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item d-none d-lg-block" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Menu 11</span>
+          </a>
+          <div id="collapseFive" class="collapse navbar-collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu12()">Menu 12</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu13()">Menu 13</a>          </div>
+
+           </div>
+         </li>
+		 
+		 
+		<!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Menu 14</span>
+          </a>
+          <div id="collapseSix" class="collapse navbar-collapse" aria-labelledby="headingSix" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu15()">Menu 15</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu16()">Menu 16</a>          </div>
+
+           </div>
+         </li>
+		 
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Tracking</span>
+          </a>
+          <div id="collapseSeven" class="collapse navbar-collapse" aria-labelledby="headingSeven" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="trackLocation()">Switch tracking on</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removePositionPoints()">Switch tracking off</a>          </div>
+
+           </div>
+         </li>
+
+
+       </ul>
+       <!-- End of Sidebar -->
+
+       <div id="content-wrapper" class="d-flex flex-column">
+       <div id="mapContainer" class="h-100 w-100" style="z-index:0;"></div>
+      </div>
+      <!-- End of Main Content -->
+    </div>
+    <!-- end of wrapper -->
+
+  </body>
+
+
+
+<script>
+function loadMap() {
+      // map loading code goes here
+	  loadLeafletMap();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("listener domcontentloaded");
+  loadMap();
+}, false);
+
+</script>
+
+  </html>
