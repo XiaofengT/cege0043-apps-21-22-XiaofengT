@@ -3,7 +3,7 @@ var buildingLayer;
 
 function getBuildingData() {
 	//Check the existence of variable, add the data only if variable is undefined
-	if (typeof buildingLayer === 'undefined'){
+	if (!mymap.hasLayer(buildingLayer)){
 		var baseComputerAddress = document.location.origin;
 		var dataAddress = "/api/getGeoJSON/ucfscde/buildings/building_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
@@ -38,7 +38,7 @@ var ethernetLayer;
 
 function getEthernetData() {
 	//Check the existence of variable, add the data only if variable is undefined
-	if (typeof ethernetLayer === 'undefined'){
+	if (!mymap.hasLayer(ethernetLayer)){
 		var baseComputerAddress = document.location.origin;
 		var dataAddress = "/api/getGeoJSON/ucfscde/ethernet_cables/ethernet_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
@@ -100,7 +100,7 @@ var roomLayer;
 
 function getRoomData() {
 	//Check the existence of variable, add the data only if variable is undefined
-	if (typeof roomLayer === 'undefined'){
+	if (!mymap.hasLayer(roomLayer)){
 		var baseComputerAddress = document.location.origin;
 		var dataAddress = "/api/getGeoJSON/ucfscde/rooms/room_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
@@ -135,7 +135,7 @@ var sensorLayer;
 
 function getSensorData() {
 	//Check the existence of variable, add the data only if variable is undefined
-	if (typeof sensorLayer === 'undefined'){
+	if (!mymap.hasLayer(sensorLayer)){
 		var baseComputerAddress = document.location.origin;
 		var dataAddress = "/api/getGeoJSON/ucfscde/temperature_sensors/sensor_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
