@@ -28,11 +28,31 @@
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
 
 	<script src="js/sb-admin-2.js"></script>
 	<script src="js/trackLocationOnMapBoot.js"></script>
 	<script src="js/centennial.js"></script>
 	<script src="js/graph.js"></script>
+	
+	<!-- set the style for the bar graph -->
+	<style>
+	.bar {
+	  fill: #71EEB8;
+	}
+
+	.bar:hover {
+	  fill: slateblue;
+	}
+
+	.axis-x path {
+	  display: none;
+	}
+
+	.axis text {
+	  font-weight: bold;
+	}
+	</style>
 
     <title>Bootstrap Simplified Template</title>
     <!-- adapted from: https://blackrockdigital.github.io/startbootstrap-sb-admin-2/ -->
