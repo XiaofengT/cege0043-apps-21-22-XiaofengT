@@ -183,7 +183,22 @@
 
              <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getSensorData()">Load sensors</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="RemoveSensorData()">Remove sensors</a>          </div>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeSensorData()">Remove sensors</a>          </div>
+
+           </div>
+         </li>
+		 
+		 <!-- Graphs menu-->
+		 <li class="nav-item d-none d-lg-block" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Graphs</span>
+          </a>
+          <div id="collapseNine" class="collapse navbar-collapse" aria-labelledby="headingNine" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Show Graph</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Remove Graph</a>          </div>
 
            </div>
          </li>
