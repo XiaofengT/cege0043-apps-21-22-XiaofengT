@@ -21,7 +21,7 @@ function getBuildingData() {
 		});// end of the ajax request
 	}
 	else{
-		alert("Buildings Layer already exist!")
+		alert("Buildings Layer already exist!");
 	}
 }// end of the getBuildingData function
 function removeBuildingData() {
@@ -83,7 +83,7 @@ function getEthernetData() {
 		 }); // end of the ajax request
 	}
 	else{
-		alert("Ethernet cables Layer already exist!")
+		alert("Ethernet cables Layer already exist!");
 	}
 } // end of the getEthernetData function 
 function removeEthernetData() {
@@ -118,7 +118,7 @@ function getRoomData() {
 		});// end of the ajax request
 	}
 	else{
-		alert("Rooms Layer already exist!")
+		alert("Rooms Layer already exist!");
 	}
 }// end of the getRoomData function
 function removeRoomData() {
@@ -153,7 +153,7 @@ function getSensorData() {
 		});// end of the ajax request
 	}
 	else{
-		alert("Temperature sensors Layer already exist!")
+		alert("Temperature sensors Layer already exist!");
 	}
 }// end of the getSensorData function
 function removeSensorData() {
