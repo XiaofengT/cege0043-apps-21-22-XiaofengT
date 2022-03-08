@@ -31,6 +31,7 @@
 
 	<script src="js/sb-admin-2.js"></script>
 	<script src="js/trackLocationOnMapBoot.js"></script>
+	<script src="js/centennial.js"></script>
 
     <title>Bootstrap Simplified Template</title>
     <!-- adapted from: https://blackrockdigital.github.io/startbootstrap-sb-admin-2/ -->
@@ -168,21 +169,21 @@
           </a>
           <div id="collapseEight" class="collapse navbar-collapse" aria-labelledby="headingEight" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Load buildings</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getBuildingData()">Load buildings</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Remove buildings</a>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeBuildingData()">Remove buildings</a>
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Load ethernet cables</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getEthernetData()">Load ethernet cables</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Remove ethernet cables</a>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeEthernetData()">Remove ethernet cables</a>
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Load rooms</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getRoomData()">Load rooms</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Remove rooms</a>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeRoomData()">Remove rooms</a>
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1())">Load sensors</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getSensorData()">Load sensors</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">Remove sensors</a>          </div>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="RemoveSensorData()">Remove sensors</a>          </div>
 
            </div>
          </li>
