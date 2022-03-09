@@ -34,7 +34,6 @@ function getBuildingData() {
 			// load the geoJSON layer
 			buildingLayer = L.geoJson(result).addTo(mymap); 
 			buildingLayer.addData(result);
-			// iterate over the lines and set style depending on district 
 			
 			// change the map zoom so that all the data is shown
 			 mymap.fitBounds(buildingLayer.getBounds());
@@ -55,62 +54,34 @@ function removeBuildingData() {
 } 
 
 // Ethernet cables data
-var ethernetLayer;	
+var universityLayer;	
 
-function getEthernetData() {
+function getUniversityData() {
 	//Check the existence of variable, add the data only if variable is undefined
-	if (!mymap.hasLayer(ethernetLayer)){
+	if (!mymap.hasLayer(universityLayer)){
 		var baseComputerAddress = document.location.origin;
-		var dataAddress = "/api/getGeoJSON/ucfscde/ethernet_cables/ethernet_id/location";
+		var dataAddress = "/api/getGeoJSON/ucfscde/university/university_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
 		$.ajax({url: layerURL, dataType: 'json' ,success: function(result){
-			 console.log(result); // check that the data is correct
-			 var style1={
-			 "color": "#ea3008",
-			 "weight": 10,
-			 "opacity": 0.65
-			 };
-			 var style2={
-			 "color": "#08EA3E",
-			 "weight": 10,
-			 "opacity": 0.65
-			 }; 
-			 var style1={
-			 "color": "#0811EA",
-			 "weight": 10,
-			 "opacity": 0.65
-			 };
+			 //console.log(result); // check that the data is correct
 			 // add the JSON layer onto the map - it will appear using the default icons
 			 // load the geoJSON layer
-			 ethernetLayer = L.geoJson(result).addTo(mymap); 
-			 ethernetLayer.addData(result);
-			 // iterate over the lines and set style depending on district 
-			 ethernetLayer.eachLayer(function(layer) {
-				 //console.log(layer);
-				 switch (layer.feature.properties.criticality) {
-					 case 2:
-						layer.setStyle(style1);
-						break;
-					 case 3:
-						layer.setStyle(style2);
-						break;
-					 default:
-						layer.setStyle(style3);
-			 }
-			});
+			 universityLayer = L.geoJson(result).addTo(mymap); 
+			 universityLayer.addData(result);
+			 
 			 // change the map zoom so that all the data is shown
-			 mymap.fitBounds(ethernetLayer.getBounds());
+			 mymap.fitBounds(universityLayer.getBounds());
 		 } // end of the inner function
 		 }); // end of the ajax request
 	}
 	else{
-		alert("Ethernet cables Layer already exist!");
+		alert("University Layer already exist!");
 	}
-} // end of the getEthernetData function 
-function removeEthernetData() {
+} // end of the getUniversityData function 
+function removeUniversityData() {
 	try{
-		alert("remove the ethernet data here");
-		mymap.removeLayer(ethernetLayer);
+		alert("remove the university data here");
+		mymap.removeLayer(universityLayer);
 	}catch(err){
 		alert("Layer doesn't exist:" + err);
 	}
