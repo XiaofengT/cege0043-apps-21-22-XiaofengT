@@ -29,7 +29,7 @@ function getBuildingData() {
 		var dataAddress = "/api/getGeoJSON/ucfscde/buildings/building_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
 		$.ajax({url: layerURL, dataType: 'json' ,success: function(result){
-			console.log(result);
+			//console.log(result);
 			// add the JSON layer onto the map - it will appear using the default icons
 			// load the geoJSON layer
 			buildingLayer = L.geoJson(result).addTo(mymap); 
@@ -46,7 +46,7 @@ function getBuildingData() {
 }// end of the getBuildingData function
 function removeBuildingData() {
 	try{
-		alert("remove the buildings data here");
+		//alert("remove the buildings data here");
 		mymap.removeLayer(buildingLayer);
 	}catch(err){
 		alert("Layer doesn't exist:" + err);
@@ -80,7 +80,7 @@ function getUniversityData() {
 } // end of the getUniversityData function 
 function removeUniversityData() {
 	try{
-		alert("remove the university data here");
+		//alert("remove the university data here");
 		mymap.removeLayer(universityLayer);
 	}catch(err){
 		alert("Layer doesn't exist:" + err);
@@ -97,7 +97,7 @@ function getRoomData() {
 		var dataAddress = "/api/getGeoJSON/ucfscde/rooms/room_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
 		$.ajax({url: layerURL, dataType: 'json' ,success: function(result){
-			console.log(result);
+			//console.log(result);
 			// add the JSON layer onto the map - it will appear using the default icons
 			// load the geoJSON layer
 			roomLayer = L.geoJson(result).addTo(mymap); 
@@ -115,7 +115,7 @@ function getRoomData() {
 }// end of the getRoomData function
 function removeRoomData() {
 	try{
-		alert("remove the rooms data here");
+		//alert("remove the rooms data here");
 		mymap.removeLayer(roomLayer);
 	}catch(err){
 		alert("Layer doesn't exist:" + err);
@@ -132,7 +132,7 @@ function getSensorData() {
 		var dataAddress = "/api/getGeoJSON/ucfscde/temperature_sensors/sensor_id/location";
 		var layerURL = baseComputerAddress + dataAddress;
 		$.ajax({url: layerURL, dataType: 'json' ,success: function(result){
-			console.log(result);
+			//console.log(result);
 			// add the JSON layer onto the map - it will appear using the default icons
 			// load the geoJSON layer
 			sensorLayer = L.geoJson(result).addTo(mymap); 
@@ -150,7 +150,7 @@ function getSensorData() {
 }// end of the getSensorData function
 function removeSensorData() {
 	try{
-		alert("remove the temperature sensors data here");
+		//alert("remove the temperature sensors data here");
 		mymap.removeLayer(sensorLayer);
 	}catch(err){
 		alert("Layer doesn't exist:" + err);
