@@ -1,10 +1,6 @@
 // the following script will load the map and set the default view and zoom, as well as loading the basemap tiles
 // load the map
 var mymap;
-// create an array to store all the location tracking points
-var trackLocationLayer =[];
-// store the ID of the locaiton tracker so that it can be used to switch the location tracking off 
-var geoLocationID;
 // load the tiles
 function loadLeafletMap(){
 mymap = L.map('mapContainer').setView([51.505, -0.09], 9);
