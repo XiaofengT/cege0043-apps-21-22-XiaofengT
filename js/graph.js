@@ -2,8 +2,6 @@ function closeGraph() {
 	document.getElementById("graphWrapper").style.top = "-9999px";
 }
 function showGraph() {
-	document.getElementById("graphWrapper").style.top = "300px";
-	// the code to generate the graph goes here
 	document.getElementById("graphWrapper").style.top="15%";
 	console.log(document.getElementById("graphWrapper").style.top);
 	var widtha = document.getElementById("graphWrapper").offsetWidth;
