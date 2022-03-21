@@ -1,6 +1,5 @@
-function startDataUpload() {
-	alert ("start data upload");
-
+function saveNewAsset() {
+	
 	var asset_name = document.getElementById("asset_name").value;
 	var installation_date = document.getElementById("installation_date").value;
 	var postString = "asset_name="+asset_name +"&installation_date="+installation_date;
@@ -13,8 +12,6 @@ function startDataUpload() {
 	processData(postString);
 
 }
-
-
 
 function processData(postString) {
 	alert(postString);
