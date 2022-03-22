@@ -40,6 +40,29 @@ function setMapClickEvent() {
 	}
 }
 
+function setUpPointClick() {
+	// create a geoJSON feature (in your assignment code this will be replaced
+	// by an AJAX call to load the asset points on the map
+	var geojsonFeature = {
+		"type": "Feature",
+		"properties": {
+			"name": "London",
+			"popupContent": "This is where UCL is based"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-0.13263, 51.522449]
+		}
+	};
+	// and add it to the map and zoom to that location
+	// use the mapPoint variable so that we can remove this point layer on
+	mapPoint= L.geoJSON(geojsonFeature).addTo(mymap).bindPopup(popUpHTML);
+	mymap.setView([51.522449,-0.13263], 12)
+	// the on click functionality of the POINT should pop up partially populated condition form so that
+	the user can select the condition they require
+	var popUpHTML = getPopupHTML;
+	console.log(popUpHTML);
+}
 
 function menu1(){
 	alert("this function shows list of assets in best condition "+arguments.callee.name);
