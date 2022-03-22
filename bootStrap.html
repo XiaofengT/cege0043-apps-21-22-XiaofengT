@@ -72,44 +72,45 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-		 <!-- Centennial menu-->
-		 <li class="nav-item" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+		
+		 <!-- Asset Location menu-->
+		 <li class="nav-item d-none d-lg-block" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Centennial</span>
+            <span>Asset Location</span>
           </a>
-          <div id="collapseEight" class="collapse navbar-collapse" aria-labelledby="headingEight" data-parent="#accordionSidebar">
+          <div id="collapseOne" class="collapse navbar-collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getBuildingData()">Load buildings</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="showGraph()">List of Assets in Best Condition</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeBuildingData()">Remove buildings</a>
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getUniversityData()">Load University</a>          
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeUniversityData()">Remove University</a>
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getRoomData()">Load rooms</a>          
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeRoomData()">Remove rooms</a>
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getSensorData()">Load sensors</a>          
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeSensorData()">Remove sensors</a>          </div>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="closeGraph()">Daily Reporting Rates Graph</a>          </div>
 
            </div>
          </li>
 		 
-		 <!-- Graphs menu-->
-		 <li class="nav-item d-none d-lg-block" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+		 <!-- Condition Assessment menu-->
+		 <li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Graphs</span>
+            <span>Condition Assessment</span>
           </a>
-          <div id="collapseNine" class="collapse navbar-collapse" aria-labelledby="headingNine" data-parent="#accordionSidebar">
+          <div id="collapseTwo" class="collapse navbar-collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="showGraph()">Show Graph</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getBuildingData()">Help</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="closeGraph()">Remove Graph</a>          </div>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeBuildingData()">User Ranking</a>
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getUniversityData()">Add Layer – 5 closest assets</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeUniversityData()">Remove Layer – 5 closest assets</a>
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getRoomData()">Add Layer – last 5 reports, colour coded</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeRoomData()">Remove layer – last 5 reports</a>
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getSensorData()">Add Layer – not rated in the last 3 days</a>          
+
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeSensorData()">Remove Layer – not rated in the last 3 days</a>          </div>
 
            </div>
          </li>
