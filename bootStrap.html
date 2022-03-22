@@ -30,8 +30,7 @@
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 
 	<script src="js/sb-admin-2.js"></script>
-	<script src="js/centennial.js"></script>
-	<script src="js/graph.js"></script>
+	<script src="js/menu.js"></script>
 	
 	<!-- set the style for the bar graph -->
 	<style>
@@ -81,9 +80,9 @@
           </a>
           <div id="collapseOne" class="collapse navbar-collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="showGraph()">List of Assets in Best Condition</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu1()">List of Assets in Best Condition</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="closeGraph()">Daily Reporting Rates Graph</a>          </div>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu2()">Daily Reporting Rates Graph</a>          </div>
 
            </div>
          </li>
@@ -96,21 +95,21 @@
           </a>
           <div id="collapseTwo" class="collapse navbar-collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getBuildingData()">Help</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu3()">Help</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeBuildingData()">User Ranking</a>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu4()">User Ranking</a>
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getUniversityData()">Add Layer – 5 closest assets</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu5()">Add Layer – 5 closest assets</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeUniversityData()">Remove Layer – 5 closest assets</a>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu6()">Remove Layer – 5 closest assets</a>
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getRoomData()">Add Layer – last 5 reports, colour coded</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu7()">Add Layer – last 5 reports, colour coded</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeRoomData()">Remove layer – last 5 reports</a>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu8()">Remove layer – last 5 reports</a>
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getSensorData()">Add Layer – not rated in the last 3 days</a>          
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu9()">Add Layer – not rated in the last 3 days</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeSensorData()">Remove Layer – not rated in the last 3 days</a>          </div>
+             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="menu10()">Remove Layer – not rated in the last 3 days</a>          </div>
 
            </div>
          </li>
