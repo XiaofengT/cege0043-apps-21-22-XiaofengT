@@ -72,53 +72,16 @@ function getPopupHTML(){
 	'Not working and maintenance must be done as soon as reasonably possible <input type="radio" name="condition_description" id ="4"/><br />'+
 	'Not working and needs immediate, urgent maintenance <input type="radio" name="condition_description" id ="5"/><br />'+
 	''+
-	'<div id="previousConditionValue" style="display: none;" hidden>1</div>'+
-	'<div id="assetID" style="display: none;" hidden>2</div>'+
+	'<div id="previousConditionValue" style="display: none;">1</div>'+
+	'<div id="assetID" style="display: none;">2</div>'+
 	''+
 	'<p>Click here to save your asset</p>'+
 	'<button id="saveCondition" onclick="saveConditionInformation()">Save condition information</button>'+
 	'<br />'+
 	'<br />'+
-	'<div id="conditionResult">The result goes here</div>'+
-	'<br />'+
-	'<br />'+
-	''+
-	'<hr>';
+	'<div id="conditionResult">The result goes here</div>';
 	return htmlString;
 }
-
-/* function checkCondition(id){
-	var previousConditionValue = document.getElementById("previousConditionValue_"+id).value;
-	var postString = "assetID="+id;
-	
-	if (document.getElementById(id+"_1").checked) {
-		postString = postString + "&conditionvalue=1"
-		conditionValue = 1;
-	}
-	if (document.getElementById(id+"_2").checked) {
-		postString = postString + "&conditionvalue=2"
-		conditionValue = 2;
-	}
-	if (document.getElementById(id+"_3").checked) {
-		postString = postString + "&conditionvalue=3"
-		conditionValue = 3;
-	}
-	if (document.getElementById(id+"_4").checked) {
-		postString = postString + "&conditionvalue=4"
-		conditionValue = 4;
-	}
-	if (document.getElementById(id+"_5").checked) {
-		postString = postString + "&conditionvalue=5"
-		conditionValue = 5;
-	}
-	if (conditionValue == previousConditionValue) {
-		alert("The condition value already exist!");
-	}
-	else{
-		processData(postString);
-		document.getElementById("previousConditionValue_"+id).value = conditionValue;
-	}
-} */
 
 function onMapClick(e) {
 	var formHTML = basicFormHtml();

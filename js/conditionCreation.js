@@ -7,6 +7,7 @@ function saveConditionInformation(data) {
 	var postString = "assetID="+assetID+"&Old_condition_value="+previousConditionValue+
 	"&asset_name="+asset_name+"&installation_date="+installation_date+"&user_id="+user_id;
 	
+	try{
 	if (document.getElementById("1").checked) {
 		postString = postString + "&conditionvalue=1"
 		conditionValue = 1;
@@ -31,12 +32,16 @@ function saveConditionInformation(data) {
 		alert("The condition value already exist!");
 	}
 	else{
-		ConditionProcessData(postString);
+		conditionProcessData(postString);
 		document.getElementById("previousConditionValue").value = conditionValue;
+	}
+	}
+	catch(err){
+		alert('Please select a condition description!')
 	}
 }
 
-function ConditionProcessData(postString) {
+function conditionProcessData(postString) {
 	alert(postString);
 
 	var serviceUrl=  document.location.origin + "/api/testCRUD";
