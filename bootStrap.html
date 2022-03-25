@@ -30,8 +30,9 @@
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 
 	<script src="js/sb-admin-2.js"></script>
-	<script src="js/centennial.js"></script>
-	<script src="js/graph.js"></script>
+	<script src="js/uploadData.js"></script>
+	<script src="js/assetCreation.js"></script>
+	<script src="js/conditionCreation.js"></script>
 	
 	<!-- set the style for the bar graph -->
 	<style>
@@ -72,49 +73,100 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-		 <!-- Centennial menu-->
-		 <li class="nav-item" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+		
+		<!-- Asset Location menu-->
+		<li class="nav-item d-none d-lg-block" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu1()" aria-expanded="true" aria-controls="collapseOne">
+            <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
-            <span>Centennial</span>
+            <span>List of Assets in Best Condition</span>
           </a>
-          <div id="collapseEight" class="collapse navbar-collapse" aria-labelledby="headingEight" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getBuildingData()">Load buildings</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeBuildingData()">Remove buildings</a>
+        </li>
+		
+		<li class="nav-item d-none d-lg-block" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu2()" aria-expanded="true" aria-controls="collapseTwo">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Daily Reporting Rates Graph</span>
+          </a>
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getUniversityData()">Load University</a>          
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeUniversityData()">Remove University</a>
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getRoomData()">Load rooms</a>          
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeRoomData()">Remove rooms</a>
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="getSensorData()">Load sensors</a>          
-
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="removeSensorData()">Remove sensors</a>          </div>
-
-           </div>
-         </li>
+        </li>
 		 
-		 <!-- Graphs menu-->
-		 <li class="nav-item d-none d-lg-block" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+		 
+		<!-- Condition Assessment menu-->
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu3()" aria-expanded="true" aria-controls="collapseThree">
+            <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
-            <span>Graphs</span>
+            <span>Help</span>
           </a>
-          <div id="collapseNine" class="collapse navbar-collapse" aria-labelledby="headingNine" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="showGraph()">Show Graph</a>          
 
-             <a class="collapse-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="#" onclick="closeGraph()">Remove Graph</a>          </div>
+        </li>
+		
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu4()" aria-expanded="true" aria-controls="collapseFour">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>User Ranking</span>
+          </a>
 
-           </div>
-         </li>
+        </li>
+		
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu5()" aria-expanded="true" aria-controls="collapseFive">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Add Layer – 5 closest assets</span>
+          </a>
 
+        </li>
+		
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu6()" aria-expanded="true" aria-controls="collapseSix">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Remove Layer – 5 closest assets</span>
+          </a>
 
+        </li>
+		
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu7()" aria-expanded="true" aria-controls="collapseSeven">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Add Layer – last 5 reports</span>
+          </a>
+
+        </li>
+		
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu8()" aria-expanded="true" aria-controls="collapseEight">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Remove Layer – last 5 reports</span>
+          </a>
+
+        </li>
+		
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu9()" aria-expanded="true" aria-controls="collapseNine">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Add Layer – not rated in the last 3 days</span>
+          </a>
+
+        </li>
+		
+		<li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu10()" aria-expanded="true" aria-controls="collapseTen">
+            <!-- the next line is the cog image -->
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Remove Layer – not rated in the last 3 days</span>
+          </a>
+
+        </li>
+		
        </ul>
        <!-- End of Sidebar -->
 
@@ -135,8 +187,10 @@
 
 <script>
 function loadMap() {
-      // map loading code goes here
-	  loadLeafletMap();
+	// map loading code goes here
+	loadLeafletMap();
+	window.addEventListener('resize', setMapClickEvent);
+	setMapClickEvent();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
