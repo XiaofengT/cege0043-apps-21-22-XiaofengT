@@ -66,11 +66,11 @@ function setUpPointClick() {
 function getPopupHTML(){
 	
 	var htmlString	= '<p>Select the condition description</p>'+
-	'Element is in very good condition <input type="radio" name="condition_description" id="1" /><br />'+
-	'Some aesthetic defects, needs minor repair <input type="radio" name="condition_description" id ="2"/><br />'+
-	'Functional degradation of some parts, needs maintenance <input type="radio" name="condition_description" id="3" /><br />'+
-	'Not working and maintenance must be done as soon as reasonably possible <input type="radio" name="condition_description" id ="4"/><br />'+
-	'Not working and needs immediate, urgent maintenance <input type="radio" name="condition_description" id ="5"/><br />'+
+	'<input type="radio" name="condition_description" id="1" />Element is in very good condition<br />'+
+	'<input type="radio" name="condition_description" id ="2"/>Some aesthetic defects, needs minor repair<br />'+
+	'<input type="radio" name="condition_description" id="3" />Functional degradation of some parts, needs maintenance<br />'+
+	'<input type="radio" name="condition_description" id ="4"/>Not working and maintenance must be done as soon as reasonably possible<br />'+
+	'<input type="radio" name="condition_description" id ="5"/>Not working and needs immediate, urgent maintenance<br />'+
 	''+
 	'<div id="previousConditionValue" style="display: none;">1</div>'+
 	'<div id="assetID" style="display: none;">2</div>'+
