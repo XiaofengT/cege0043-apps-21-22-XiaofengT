@@ -8,7 +8,7 @@ function saveNewAsset() {
 	var latitude = document.getElementById("latitude").value;
 	var longitude = document.getElementById("longitude").value;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
-	var user_id = "1"
+	var user_id = document.getElementById("user_id").innerHTML;
 	postString = postString + "&user_id=" + user_id;
 	
 	assetProcessData(postString);
