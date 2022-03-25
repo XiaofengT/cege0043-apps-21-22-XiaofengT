@@ -1,30 +1,30 @@
-function saveConditionInformation(data) {
-	var asset_name = "Asset";
-	var installation_date = "2022-03-20";
-	var user_id = "1";
-	var assetID = document.getElementById("assetID").value;
-	var previousConditionValue = document.getElementById("previousConditionValue").value;
+function checkCondition(data) {
+	var asset_name = document.getElementById("asset_name").innerHTML;
+	var installation_date = document.getElementById("installation_date").innerHTML;
+	var user_id = document.getElementById("user_id").innerHTML;
+	var assetID = document.getElementById("asset_"+data).innerHTML;
+	var previousConditionValue = document.getElementById("previousConditionValue_"+data).value;
 	var postString = "assetID="+assetID+"&Old_condition_value="+previousConditionValue+
 	"&asset_name="+asset_name+"&installation_date="+installation_date+"&user_id="+user_id;
 	
 	try{
-	if (document.getElementById("1").checked) {
+	if (document.getElementById(data+"_1").checked) {
 		postString = postString + "&conditionvalue=1"
 		conditionValue = 1;
 	}
-	if (document.getElementById("2").checked) {
+	if (document.getElementById(data+"_2").checked) {
 		postString = postString + "&conditionvalue=2"
 		conditionValue = 2;
 	}
-	if (document.getElementById("3").checked) {
+	if (document.getElementById(data+"_3").checked) {
 		postString = postString + "&conditionvalue=3"
 		conditionValue = 3;
 	}
-	if (document.getElementById("4").checked) {
+	if (document.getElementById(data+"_4").checked) {
 		postString = postString + "&conditionvalue=4"
 		conditionValue = 4;
 	}
-	if (document.getElementById("5").checked) {
+	if (document.getElementById(data+"_5").checked) {
 		postString = postString + "&conditionvalue=5"
 		conditionValue = 5;
 	}
@@ -33,7 +33,7 @@ function saveConditionInformation(data) {
 	}
 	else{
 		conditionProcessData(postString);
-		document.getElementById("previousConditionValue").value = conditionValue;
+		document.getElementById("previousConditionValue_"+data).value = conditionValue;
 	}
 	}
 	catch(err){

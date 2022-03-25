@@ -64,20 +64,24 @@ function setUpPointClick() {
 }
 
 function getPopupHTML(){
-	
-	var htmlString	= '<p>Select the condition description</p>'+
-	'<input type="radio" name="condition_description" id="1" />Element is in very good condition<br />'+
-	'<input type="radio" name="condition_description" id ="2"/>Some aesthetic defects, needs minor repair<br />'+
-	'<input type="radio" name="condition_description" id="3" />Functional degradation of some parts, needs maintenance<br />'+
-	'<input type="radio" name="condition_description" id ="4"/>Not working and maintenance must be done as soon as reasonably possible<br />'+
-	'<input type="radio" name="condition_description" id ="5"/>Not working and needs immediate, urgent maintenance<br />'+
-	''+
-	'<div id="previousConditionValue" style="display: none;">1</div>'+
-	'<div id="assetID" style="display: none;">2</div>'+
-	''+
-	'<p>Click here to save your asset</p>'+
-	'<button id="saveCondition" onclick="saveConditionInformation()">Save condition information</button>'+
-	'<br />'+
+	var assetID = "1272"
+	var asset_name = "Asset";
+	var installation_date = "2022-03-20";
+	var user_id = "1";
+	var previousConditionValue = "None"
+	var htmlString	= "<div id='asset_name'>"+asset_name+"</div><br>";
+	htmlString = htmlString +"<div id='installation_date'>"+ installation_date + "</div><br>";
+	htmlString = htmlString +"<div id='user_id' hidden>"+user_id+"</div>";
+	htmlString = htmlString +'<p>Select the condition description</p>';
+	htmlString = htmlString +"<input type='radio' name='condition_description' id='"+assetID+"_1' />Element is in very good condition<br />";
+	htmlString = htmlString +"<input type='radio' name='condition_description' id='"+assetID+"_2' />Some aesthetic defects, needs minor repair<br />";
+	htmlString = htmlString +"<input type='radio' name='condition_description' id='"+assetID+"_3' />Functional degradation of some parts, needs maintenance<br />";
+	htmlString = htmlString +"<input type='radio' name='condition_description' id='"+assetID+"_4' />Not working and maintenance must be done as soon as reasonably possible<br />";
+	htmlString = htmlString +"<input type='radio' name='condition_description' id='"+assetID+"_5' />Not working and needs immediate, urgent maintenance<br />";
+	htmlString = htmlString +"<div id=previousConditionValue_"+assetID+" style='display: none;'>"+previousConditionValue+"</div>";
+	htmlString = htmlString +"<div id=asset_"+assetID+" style='display: none;'>"+assetID+"</div>";
+	htmlString = htmlString +"<p>Click here to save your asset</p>";
+	htmlString = htmlString +"<button id='saveCondition' onclick='checkCondition("+assetID+");return false;'>Save condition information</button>"+
 	'<br />'+
 	'<div id="conditionResult">The result goes here</div>';
 	return htmlString;
@@ -88,11 +92,12 @@ function onMapClick(e) {
 	popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()+"<br>"+formHTML).openOn(mymap);
 }
 function basicFormHtml() {
+	var user_id = "1";
 	var myvar = '<label for="asset_name">Asset name</label><input type="text" size="25" id="asset_name"/><br />'+
 	'<label for="installation_date">Installation date</label><input type="date" id="installation_date"/><br />'+
 	'<label for="latitude">Latitude</label><input type="text" size="25" id="latitude"/><br />'+
 	'<label for="longitude">Longitude</label><input type="text" size="25" id="longitude"/><br />'+
-	''+
+	"<div id='user_id' hidden>"+user_id+"</div>"+
 	''+
 	'<p>Click here to save your asset</p>'+
 	'<button id="saveAsset" onclick="saveNewAsset()">Save new asset</button>'+
