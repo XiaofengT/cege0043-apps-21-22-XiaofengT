@@ -27,12 +27,12 @@ function saveConditionInformation(data) {
 		alert("The condition value already exist!");
 	}
 	else{
-		processData(postString);
+		ConditionProcessData(postString);
 		document.getElementById("previousConditionValue").value = conditionValue;
 	}
 }
 
-function processData(postString) {
+function ConditionProcessData(postString) {
 	alert(postString);
 
 	var serviceUrl=  document.location.origin + "/api/testCRUD";
@@ -41,12 +41,12 @@ function processData(postString) {
     crossDomain: true,
     type: "POST",
     data: postString,
-    success: function(data){console.log(data); dataUploaded(data);}
+    success: function(data){console.log(data); conditionDataUploaded(data);}
 
 }); 
 }
 // create the code to process the response from the data server
-function dataUploaded(data) {
+function conditionDataUploaded(data) {
     // change the DIV to show the response
     document.getElementById("conditionResult").innerHTML = JSON.stringify(data);
 }

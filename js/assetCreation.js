@@ -9,7 +9,7 @@ function saveNewAsset() {
 	var longitude = document.getElementById("longitude").value;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	
-	processData(postString);
+	assetProcessData(postString);
 
 }
 
@@ -29,7 +29,7 @@ function dataDeleted(data){
     document.getElementById("deleteAssetResponse").innerHTML = JSON.stringify(data);
 }
 
-function processData(postString) {
+function assetProcessData(postString) {
 	alert(postString);
 
 	var serviceUrl=  document.location.origin + "/api/testCRUD";
@@ -38,12 +38,12 @@ function processData(postString) {
     crossDomain: true,
     type: "POST",
     data: postString,
-    success: function(data){console.log(data); dataUploaded(data);}
+    success: function(data){console.log(data); assetDataUploaded(data);}
 
 }); 
 }
 // create the code to process the response from the data server
-function dataUploaded(data) {
+function assetDataUploaded(data) {
     // change the DIV to show the response
     document.getElementById("responseDIV").innerHTML = JSON.stringify(data);
 }

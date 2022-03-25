@@ -56,57 +56,58 @@ function setUpPointClick() {
 	};
 	// and add it to the map and zoom to that location
 	// use the mapPoint variable so that we can remove this point layer on
+	// the on click functionality of the POINT should pop up partially populated condition form so that the user can select the condition they require
+	var popUpHTML = getPopupHTML;
 	mapPoint= L.geoJSON(geojsonFeature).addTo(mymap).bindPopup(popUpHTML);
 	mymap.setView([51.522449,-0.13263], 12)
-	// the on click functionality of the POINT should pop up partially populated condition form so that the user can select the condition they require
-	var popUpHTML = getPopupHTML();
 	console.log(popUpHTML);
 }
 
 function getPopupHTML(){
-	var assetID = "1272"; // this will be the asset ID
-	var surname = "Ellul";
-	var name = "Claire";
-	var module="CEGE0043";
-	var language = "English";
-	var lecturetime = "6am";
-	var previousCondition = 3;
-	 var htmlString = "<DIV assetID='popup'"+ assetID+ "><h2>" + name + "</h2><br>";
-	 htmlString = htmlString + "<h3>"+surname + "</h3><br>";
-	 htmlString = htmlString + "<input type='radio' name='answer' assetID ='"+assetID+"_1'/>"+module+"<br>";
-	 htmlString = htmlString + "<input type='radio' name='answer' assetID ='"+assetID+"_2'/>"+language+"<br>";
-	 htmlString = htmlString + "<input type='radio' name='answer' assetID ='"+assetID+"_3'/>"+lecturetime+"<br>";
-	 htmlString = htmlString + "<button onclick='checkCondition(" + assetID + ");return false;'>SubmitCondition</button>";
-	 // now include a hidden element with the previous condition value
-	 htmlString = htmlString + "<div assetID=previousCondition_" + assetID + "hidden>"+previousCondition+"</div>";
-	 // and a hidden element with the ID of the asset so that we can insert the condition with the correct asset later
-	 htmlString = htmlString + "<div assetID=asset_ " + assetID + " hidden>"+assetID+"</div>";
-	 htmlString = htmlString + "</div>";
+	
+	var htmlString = '<p>Select the condition description</p>'+
+	'Element is in very good condition <input type="radio" name="condition_description" id="1" /><br />'+
+	'Some aesthetic defects, needs minor repair <input type="radio" name="condition_description" id ="2"/><br />'+
+	'Functional degradation of some parts, needs maintenance <input type="radio" name="condition_description" id="3" /><br />'+
+	'Not working and maintenance must be done as soon as reasonably possible <input type="radio" name="condition_description" id ="4"/><br />'+
+	'Not working and needs immediate, urgent maintenance <input type="radio" name="condition_description" id ="5"/><br />'+
+	''+
+	'<div id="previousConditionValue" style="display: none;">1</div>'+
+	'<div id="assetID" style="display: none;">2</div>'+
+	''+
+	'<p>Click here to save your asset</p>'+
+	'<button id="saveCondition" onclick="saveConditionInformation()">Save condition information</button>'+
+	'<br />'+
+	'<br />'+
+	'<div id="conditionResult">The result goes here</div>'+
+	'<br />'+
+	'<br />'+
+	''+
+	'<hr>';
 	return htmlString;
 }
 
-function checkCondition(){
-	var assetID = document.getElementById("assetID").value;
-	var previousConditionValue = document.getElementById("previousConditionValue").value;
-	var postString = "assetID="+assetID;
+function checkCondition(id){
+	var previousConditionValue = document.getElementById("previousConditionValue_"+id).value;
+	var postString = "assetID="+id;
 	
-	if (document.getElementById("1").checked) {
+	if (document.getElementById(id+"_1").checked) {
 		postString = postString + "&conditionvalue=1"
 		conditionValue = 1;
 	}
-	if (document.getElementById("2").checked) {
+	if (document.getElementById(id+"_2").checked) {
 		postString = postString + "&conditionvalue=2"
 		conditionValue = 2;
 	}
-	if (document.getElementById("3").checked) {
+	if (document.getElementById(id+"_3").checked) {
 		postString = postString + "&conditionvalue=3"
 		conditionValue = 3;
 	}
-	if (document.getElementById("4").checked) {
+	if (document.getElementById(id+"_4").checked) {
 		postString = postString + "&conditionvalue=4"
 		conditionValue = 4;
 	}
-	if (document.getElementById("5").checked) {
+	if (document.getElementById(id+"_5").checked) {
 		postString = postString + "&conditionvalue=5"
 		conditionValue = 5;
 	}
@@ -115,7 +116,7 @@ function checkCondition(){
 	}
 	else{
 		processData(postString);
-		document.getElementById("previousConditionValue").value = conditionValue;
+		document.getElementById("previousConditionValue_"+id).value = conditionValue;
 	}
 }
 
