@@ -1,7 +1,11 @@
 function saveConditionInformation(data) {
+	var asset_name = "Asset";
+	var installation_date = "2022-03-20";
+	var user_id = "1";
 	var assetID = document.getElementById("assetID").value;
 	var previousConditionValue = document.getElementById("previousConditionValue").value;
-	var postString = "assetID="+assetID;
+	var postString = "assetID="+assetID+"&Old_condition_value="+previousConditionValue+
+	"&asset_name="+asset_name+"&installation_date="+installation_date+"&user_id="+user_id;
 	
 	if (document.getElementById("1").checked) {
 		postString = postString + "&conditionvalue=1"

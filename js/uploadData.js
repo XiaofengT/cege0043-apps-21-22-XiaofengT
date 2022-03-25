@@ -65,15 +65,15 @@ function setUpPointClick() {
 
 function getPopupHTML(){
 	
-	var htmlString = '<p>Select the condition description</p>'+
+	var htmlString	= '<p>Select the condition description</p>'+
 	'Element is in very good condition <input type="radio" name="condition_description" id="1" /><br />'+
 	'Some aesthetic defects, needs minor repair <input type="radio" name="condition_description" id ="2"/><br />'+
 	'Functional degradation of some parts, needs maintenance <input type="radio" name="condition_description" id="3" /><br />'+
 	'Not working and maintenance must be done as soon as reasonably possible <input type="radio" name="condition_description" id ="4"/><br />'+
 	'Not working and needs immediate, urgent maintenance <input type="radio" name="condition_description" id ="5"/><br />'+
 	''+
-	'<div id="previousConditionValue" style="display: none;">1</div>'+
-	'<div id="assetID" style="display: none;">2</div>'+
+	'<div id="previousConditionValue" style="display: none;" hidden>1</div>'+
+	'<div id="assetID" style="display: none;" hidden>2</div>'+
 	''+
 	'<p>Click here to save your asset</p>'+
 	'<button id="saveCondition" onclick="saveConditionInformation()">Save condition information</button>'+
@@ -87,7 +87,7 @@ function getPopupHTML(){
 	return htmlString;
 }
 
-function checkCondition(id){
+/* function checkCondition(id){
 	var previousConditionValue = document.getElementById("previousConditionValue_"+id).value;
 	var postString = "assetID="+id;
 	
@@ -118,7 +118,7 @@ function checkCondition(id){
 		processData(postString);
 		document.getElementById("previousConditionValue_"+id).value = conditionValue;
 	}
-}
+} */
 
 function onMapClick(e) {
 	var formHTML = basicFormHtml();
