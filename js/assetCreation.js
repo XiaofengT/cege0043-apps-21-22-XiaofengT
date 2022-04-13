@@ -34,7 +34,7 @@ function dataDeleted(data){
 function assetProcessData(postString) {
 	alert(postString);
 
-	var serviceUrl=  document.location.origin + "/api/testCRUD";
+	var serviceUrl=  document.location.origin + "/api/insertAssetPoint";
    $.ajax({
     url: serviceUrl,
     crossDomain: true,

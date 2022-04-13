@@ -44,7 +44,7 @@ function checkCondition(data) {
 function conditionProcessData(postString) {
 	alert(postString);
 
-	var serviceUrl=  document.location.origin + "/api/testCRUD";
+	var serviceUrl=  document.location.origin + "/api/insertConditionInformation";
    $.ajax({
     url: serviceUrl,
     crossDomain: true,
