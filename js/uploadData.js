@@ -61,7 +61,7 @@ function setUpPointClick() {
 	var baseComputerAddress = document.location.origin;
 	var currentUserId = user_id;
 	console.log(currentUserId)
-	var dataAddress = '/geoJSONUserId/'+currentUserId;
+	var dataAddress = '/api/geoJSONUserId/'+currentUserId;
 	var assetURL = baseComputerAddress + dataAddress;
 	$.ajax({url: assetURL, dataType: 'json', success: function(result){
 		var assetLayer = L.geoJson(result).addTo(mymap).bindPopup(popUpHTML); 
