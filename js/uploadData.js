@@ -3,18 +3,19 @@
 var mymap;
 // load the tiles
 function loadLeafletMap(){
-mymap = L.map('mapContainer').setView([51.505, -0.09], 9);
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-maxZoom: 18,
-attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-id: 'mapbox/streets-v11',
-tileSize: 512,
-zoomOffset: -1
-}).addTo(mymap);
+	mymap = L.map('mapContainer').setView([51.505, -0.09], 9);
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	maxZoom: 18,
+	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+	'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+	'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	id: 'mapbox/streets-v11',
+	tileSize: 512,
+	zoomOffset: -1
+	}).addTo(mymap);
 }
 
+var user_id;
 var width; // NB – keep this as a global variable
 var popup = L.popup(); // keep this as a global variable
 var mapPoint; // store the geoJSON feature so that we can remove it if the screen is resized
@@ -40,25 +41,32 @@ function setMapClickEvent() {
 	}
 }
 
+function getUserIdLoadMap() {
+	var baseComputerAddress = document.location.origin;
+	var currentUserId = '/api/getUserId';
+	var getIdURL = baseComputerAddress + currentUserId;
+	$.ajax({url: getIdURL, crossDomain: true, success: function(result){
+		 user_id = result["user_id"];
+		 loadLeafletMap()
+	}});
+}
+
 function setUpPointClick() {
 	// create a geoJSON feature (in your assignment code this will be replaced
 	// by an AJAX call to load the asset points on the map
-	var geojsonFeature = {
-		"type": "Feature",
-		"properties": {
-			"name": "London",
-			"popupContent": "This is where UCL is based"
-		},
-		"geometry": {
-			"type": "Point",
-			"coordinates": [-0.13263, 51.522449]
-		}
-	};
 	// and add it to the map and zoom to that location
 	// use the mapPoint variable so that we can remove this point layer on
 	// the on click functionality of the POINT should pop up partially populated condition form so that the user can select the condition they require
 	var popUpHTML = getPopupHTML;
-	mapPoint= L.geoJSON(geojsonFeature).addTo(mymap).bindPopup(popUpHTML);
+	var baseComputerAddress = document.location.origin;
+	var currentUserId = user_id;
+	console.log(currentUserId)
+	var dataAddress = '/geoJSONUserId/'+currentUserId;
+	var assetURL = baseComputerAddress + dataAddress;
+	$.ajax({url: assetURL, dataType: 'json', success: function(result){
+		var assetLayer = L.geoJson(result).addTo(mymap).bindPopup(popUpHTML); 
+		assetLayer.addData(result);
+	}})
 	mymap.setView([51.522449,-0.13263], 12)
 	console.log(popUpHTML);
 }
