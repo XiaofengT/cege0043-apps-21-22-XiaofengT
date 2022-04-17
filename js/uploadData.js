@@ -59,7 +59,6 @@ function setUpPointClick() {
 	// and add it to the map and zoom to that location
 	// use the mapPoint variable so that we can remove this point layer on
 	// the on click functionality of the POINT should pop up partially populated condition form so that the user can select the condition they require
-	//var popUpHTML = getPopupHTML();
 	var baseComputerAddress = document.location.origin;
 	var currentUserId = user_id;
 	var dataAddress = '/api/geoJSONUserId/'+currentUserId;
@@ -85,15 +84,9 @@ function setUpPointClick() {
 			mymap.fitBounds(assetLayer.getBounds());
 			}
 	});
-	//mymap.setView([51.522449,-0.13263], 12)
-	//console.log(popUpHTML);
 }
 
 function getPopupHTML(assetID, asset_name, installation_date, previousConditionValue){
-	// var assetID = asset["properties"]["asset_id"]
-	// var asset_name = asset["properties"]["asset_name"];
-	// var installation_date = asset["properties"]["installation_date"];
-	// var previousConditionValue = "None";
 	var htmlString	= "<div id='asset_name'>Asset name: "+asset_name+"</div><br>";
 	htmlString = htmlString +"<div id='installation_date'>Installation date: "+ installation_date + "</div>";
 	htmlString = htmlString +"<div id='user_id' hidden>"+user_id+"</div>";
@@ -108,7 +101,12 @@ function getPopupHTML(assetID, asset_name, installation_date, previousConditionV
 	htmlString = htmlString +"<p>Click here to save your asset</p>";
 	htmlString = htmlString +"<button id='saveCondition' onclick='checkCondition("+assetID+");return false;'>Save condition information</button>"+
 	'<br />'+
-	'<div id="conditionResult">The result goes here</div>';
+	'<div id="conditionResult">The result goes here</div>'+
+	'<hr>'+
+	''+
+	'<label for="deleteID">Delete ID</label><input type="text" size="25" id="deleteID"/><br />'+
+	'<button id="deleteAsset" onclick="deleteSingleAsset()">Delete Record</button>'+
+	'<div id="deleteAssetResponse">The result goes here</div>';
 	return htmlString;
 }
 

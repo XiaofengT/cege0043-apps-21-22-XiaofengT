@@ -17,13 +17,14 @@ function saveNewAsset() {
 
 function deleteSingleAsset() {
 	var deleteID = document.getElementById("deleteID").value;
-	var deleteString = "id="+deleteID;
-	var serviceUrl= document.location.origin + "/api/testCRUD";
+	console.log(deleteID);
+	var deleteString = "asset_id="+deleteID;
+	var serviceUrl= document.location.origin + "/api/deleteAsset";
 	$.ajax({
 	    url: serviceUrl,
 	    crossDomain: true,
 	    type: "POST",
-	    success: function(data){console.log(data); dataDeleted(data);},
+	    success: function(data){dataDeleted(data);},
 	    data: deleteString
 });	
 }
