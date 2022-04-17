@@ -5,8 +5,8 @@ function saveNewAsset() {
 	var postString = "asset_name="+asset_name +"&installation_date="+installation_date;
 	
 	// now get the geometry values
-	var latitude = document.getElementById("latitude").value;
-	var longitude = document.getElementById("longitude").value;
+	var latitude = document.getElementById("latitude").innerHTML;
+	var longitude = document.getElementById("longitude").innerHTML;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	var user_id = document.getElementById("user_id").innerHTML;
 	postString = postString + "&user_id=" + user_id;

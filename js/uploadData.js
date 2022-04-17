@@ -18,7 +18,7 @@ function loadLeafletMap(){
 var user_id;
 var width; // NB – keep this as a global variable
 var popup = L.popup(); // keep this as a global variable
-var mapPoint; // store the geoJSON feature so that we can remove it if the screen is resized
+var assetLayer; // store the geoJSON feature so that we can remove it if the screen is resized
 function setMapClickEvent() {
 	// get the window width
 	width = $(window).width();
@@ -27,14 +27,16 @@ function setMapClickEvent() {
 	// see here: https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
 	if (width < 992) {//the condition capture – 992px is defined as 'medium' by bootstrap
 		// cancel the map onclick event using off ..
-		mymap.off('click',onMapClick)
+		mymap.off('click',onMapClick);
 		// set up a point with click functionality
+		if (!assetLayer){
 		setUpPointClick(); 
+		}
 	}
 	else { // the asset creation page
 		// remove the map point if it exists
-		if (mapPoint){
-			mymap.removeLayer(mapPoint);
+		if (assetLayer){
+			mymap.removeLayer(assetLayer);
 		}
 		// the on click functionality of the MAP should pop up a blank asset creation form
 		mymap.on('click', onMapClick);
@@ -47,7 +49,7 @@ function getUserIdLoadMap() {
 	var getIdURL = baseComputerAddress + currentUserId;
 	$.ajax({url: getIdURL, crossDomain: true, success: function(result){
 		 user_id = result["user_id"];
-		 loadLeafletMap()
+		 loadLeafletMap();
 	}});
 }
 
@@ -60,14 +62,13 @@ function setUpPointClick() {
 	var popUpHTML = getPopupHTML;
 	var baseComputerAddress = document.location.origin;
 	var currentUserId = user_id;
-	console.log(currentUserId)
 	var dataAddress = '/api/geoJSONUserId/'+currentUserId;
 	var assetURL = baseComputerAddress + dataAddress;
 	$.ajax({url: assetURL, dataType: 'json', success: function(result){
-		var assetLayer = L.geoJson(result).addTo(mymap).bindPopup(popUpHTML); 
+		assetLayer = L.geoJson(result).addTo(mymap).bindPopup(popUpHTML); 
 		assetLayer.addData(result);
 	}})
-	mymap.setView([51.522449,-0.13263], 12)
+	//mymap.setView([51.522449,-0.13263], 12)
 	console.log(popUpHTML);
 }
 
@@ -76,7 +77,7 @@ function getPopupHTML(){
 	var asset_name = "Asset";
 	var installation_date = "2022-03-20";
 	var user_id = "1";
-	var previousConditionValue = "None"
+	var previousConditionValue = "None";
 	var htmlString	= "<div id='asset_name'>"+asset_name+"</div><br>";
 	htmlString = htmlString +"<div id='installation_date'>"+ installation_date + "</div><br>";
 	htmlString = htmlString +"<div id='user_id' hidden>"+user_id+"</div>";
@@ -96,15 +97,16 @@ function getPopupHTML(){
 }
 
 function onMapClick(e) {
-	var formHTML = basicFormHtml();
-	popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()+"<br>"+formHTML).openOn(mymap);
+	var formHTML = basicFormHtml(e);
+	popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()+"<br />"+formHTML).openOn(mymap);
 }
-function basicFormHtml() {
-	var user_id = "1";
+function basicFormHtml(e) {
+	var latitude = e.latlng.lat;
+	var longitude = e.latlng.lng;
 	var myvar = '<label for="asset_name">Asset name</label><input type="text" size="25" id="asset_name"/><br />'+
 	'<label for="installation_date">Installation date</label><input type="date" id="installation_date"/><br />'+
-	'<label for="latitude">Latitude</label><input type="text" size="25" id="latitude"/><br />'+
-	'<label for="longitude">Longitude</label><input type="text" size="25" id="longitude"/><br />'+
+	'<div id= "latitude" hidden>' + latitude +'</div>'+
+	'<div id= "longitude" hidden>'+ longitude +'</div>'+
 	"<div id='user_id' hidden>"+user_id+"</div>"+
 	''+
 	'<p>Click here to save your asset</p>'+
@@ -112,7 +114,6 @@ function basicFormHtml() {
 	'<br />'+
 	'<br />'+
 	'<div id="responseDIV">The result goes here</div>'+
-	'<br />'+
 	'<hr>'+
 	''+
 	'<label for="deleteID">Delete ID</label><input type="text" size="25" id="deleteID"/><br />'+
