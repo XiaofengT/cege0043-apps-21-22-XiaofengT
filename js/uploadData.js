@@ -59,27 +59,43 @@ function setUpPointClick() {
 	// and add it to the map and zoom to that location
 	// use the mapPoint variable so that we can remove this point layer on
 	// the on click functionality of the POINT should pop up partially populated condition form so that the user can select the condition they require
-	var popUpHTML = getPopupHTML;
+	//var popUpHTML = getPopupHTML();
 	var baseComputerAddress = document.location.origin;
 	var currentUserId = user_id;
 	var dataAddress = '/api/geoJSONUserId/'+currentUserId;
 	var assetURL = baseComputerAddress + dataAddress;
-	$.ajax({url: assetURL, dataType: 'json', success: function(result){
-		assetLayer = L.geoJson(result).addTo(mymap).bindPopup(popUpHTML); 
-		assetLayer.addData(result);
-	}})
+	$.ajax({url: assetURL, 
+			dataType: 'json', 
+			success: function(result){
+				assetLayer = L.geoJson(
+								result,{
+								pointToLayer: function(feature, latlng){
+									return L.marker(latlng).bindPopup(
+										getPopupHTML(
+										feature.properties.asset_id, 
+										feature.properties.asset_name,
+										feature.properties.installation_date,
+										feature.properties.condition_description
+										)
+									)	
+								},
+								}
+								).addTo(mymap); 
+			assetLayer.addData(result);
+			mymap.fitBounds(assetLayer.getBounds());
+			}
+	});
 	//mymap.setView([51.522449,-0.13263], 12)
-	console.log(popUpHTML);
+	//console.log(popUpHTML);
 }
 
-function getPopupHTML(){
-	var assetID = "1272"
-	var asset_name = "Asset";
-	var installation_date = "2022-03-20";
-	var user_id = "1";
-	var previousConditionValue = "None";
-	var htmlString	= "<div id='asset_name'>"+asset_name+"</div><br>";
-	htmlString = htmlString +"<div id='installation_date'>"+ installation_date + "</div><br>";
+function getPopupHTML(assetID, asset_name, installation_date, previousConditionValue){
+	// var assetID = asset["properties"]["asset_id"]
+	// var asset_name = asset["properties"]["asset_name"];
+	// var installation_date = asset["properties"]["installation_date"];
+	// var previousConditionValue = "None";
+	var htmlString	= "<div id='asset_name'>Asset name: "+asset_name+"</div><br>";
+	htmlString = htmlString +"<div id='installation_date'>Installation date: "+ installation_date + "</div>";
 	htmlString = htmlString +"<div id='user_id' hidden>"+user_id+"</div>";
 	htmlString = htmlString +'<p>Select the condition description</p>';
 	htmlString = htmlString +"<input type='radio' name='condition_description' id='"+assetID+"_1' />Element is in very good condition<br />";
