@@ -87,7 +87,7 @@ function setUpPointClick() {
 }
 
 function getPopupHTML(assetID, asset_name, installation_date, previousConditionValue){
-	var htmlString	= "<div id='asset_name'>Asset name: "+asset_name+"</div><br>";
+	var htmlString	= "<div id='asset_name'>"+asset_name+"</div><br>";
 	htmlString = htmlString +"<div id='installation_date'>Installation date: "+ installation_date + "</div>";
 	htmlString = htmlString +"<div id='user_id' hidden>"+user_id+"</div>";
 	htmlString = htmlString +'<p>Select the condition description</p>';
@@ -105,8 +105,8 @@ function getPopupHTML(assetID, asset_name, installation_date, previousConditionV
 	'<hr>'+
 	''+
 	'<label for="deleteID">Delete ID</label><input type="text" size="25" id="deleteID"/><br />'+
-	'<button id="deleteAsset" onclick="deleteSingleAsset()">Delete Record</button>'+
-	'<div id="deleteAssetResponse">The result goes here</div>';
+	'<button id="deleteCondition" onclick="deleteSingleCondition()">Delete Record</button>'+
+	'<div id="deleteConditionResponse">The result goes here</div>';
 	return htmlString;
 }
 
