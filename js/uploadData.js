@@ -19,6 +19,8 @@ var user_id;
 var width; // NB – keep this as a global variable
 var popup = L.popup(); // keep this as a global variable
 var assetLayer; // store the geoJSON feature so that we can remove it if the screen is resized
+// create an array to store all the location tracking points
+var trackLocationLayer = [];
 function setMapClickEvent() {
 	// get the window width
 	width = $(window).width();
@@ -28,6 +30,7 @@ function setMapClickEvent() {
 	if (width < 992) {//the condition capture – 992px is defined as 'medium' by bootstrap
 		// cancel the map onclick event using off ..
 		mymap.off('click',onMapClick);
+		trackLocation();
 		// set up a point with click functionality
 		if (!assetLayer){
 		setUpPointClick(); 
@@ -51,6 +54,29 @@ function getUserIdLoadMap() {
 		 user_id = result["user_id"];
 		 loadLeafletMap();
 	}});
+}
+
+function trackLocation(){
+	if(navigator.geolocation){
+		geoLocationID = navigator.geolocation.watchPosition(showPosition);
+	}else{
+		document.getElementById('showLocation').innerHTML = "Geolocation is not supported by this browser.";
+	}
+}
+function showPosition(position){
+	removePositionPoints();
+	//add the new point into the array
+	trackLocationLayer.push(L.marker([position.coords.latitude,position.coords.longitude]).addTo(mymap));
+}
+
+// remove the previous mark if user moves
+function removePositionPoints(){
+	// disable the location tracking so that a new point won't be added while you are removing the old points
+	navigator.geolocation.clearWatch(geoLocationID);
+	for(var i=trackLocationLayer.length-1; i>-1; i--){
+		console.log("removing point"+i+"which has coordinates"+trackLocationLayer[i].getLatLng());
+		mymap.removeLayer(trackLocationLayer[i])
+	}
 }
 
 function setUpPointClick() {
