@@ -22,6 +22,8 @@ var assetLayer; // store the geoJSON feature so that we can remove it if the scr
 // create an array to store all the location tracking points
 var trackLocationLayer = [];
 function setMapClickEvent() {
+	console.log(assetLayer);
+	console.log(trackLocationLayer)
 	// get the window width
 	width = $(window).width();
 	// we use the bootstrap Medium and Large options for the asset location capture
@@ -38,11 +40,15 @@ function setMapClickEvent() {
 	}
 	else { // the asset creation page
 		// remove the map point if it exists
-		if (assetLayer){
+		if (typeof assetLayer !== 'undefined'){
 			mymap.removeLayer(assetLayer);
+		}
+		if (trackLocationLayer){
+			mymap.removeLayer(trackLocationLayer)
 		}
 		// the on click functionality of the MAP should pop up a blank asset creation form
 		mymap.on('click', onMapClick);
+		setUpReadOnlyClick();
 	}
 }
 
@@ -98,7 +104,7 @@ function setUpPointClick() {
 				});
 				var conditionMarker2 = L.AwesomeMarkers.icon({
 					icon: 'play',
-					markerColor: 'gray'
+					markerColor: 'purple'
 				});
 				var conditionMarker3 = L.AwesomeMarkers.icon({
 					icon: 'play',
@@ -119,65 +125,96 @@ function setUpPointClick() {
 				assetLayer = L.geoJson(
 								result,{
 								pointToLayer: function(feature, latlng){
-									if (feature.properties.condition_description == 'Element is in very good condition'){
-										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(
-											getPopupHTML(
+									var popUpHTML = getPopupHTML(
 											feature.properties.asset_id, 
 											feature.properties.asset_name,
 											feature.properties.installation_date,
-											feature.properties.condition_description
-											)
-										)	
+											feature.properties.condition_description);
+									if (feature.properties.condition_description == 'Element is in very good condition'){
+										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(popUpHTML)	
 									}
 									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
-										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(
-											getPopupHTML(
-											feature.properties.asset_id, 
-											feature.properties.asset_name,
-											feature.properties.installation_date,
-											feature.properties.condition_description
-											)
-										)	
+										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(popUpHTML)	
 									}
 									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
-										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(
-											getPopupHTML(
-											feature.properties.asset_id, 
-											feature.properties.asset_name,
-											feature.properties.installation_date,
-											feature.properties.condition_description
-											)
-										)	
+										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(popUpHTML)	
 									}
 									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
-										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(
-											getPopupHTML(
-											feature.properties.asset_id, 
-											feature.properties.asset_name,
-											feature.properties.installation_date,
-											feature.properties.condition_description
-											)
-										)	
+										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(popUpHTML)	
 									}
 									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
-										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(
-											getPopupHTML(
-											feature.properties.asset_id, 
-											feature.properties.asset_name,
-											feature.properties.installation_date,
-											feature.properties.condition_description
-											)
-										)	
+										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(popUpHTML)	
 									}
-									if (feature.properties.condition_description == 'Unknown'){
-										return L.marker(latlng, {icon: conditionMarker6}).bindPopup(
-											getPopupHTML(
-											feature.properties.asset_id, 
-											feature.properties.asset_name,
-											feature.properties.installation_date,
-											feature.properties.condition_description
-											)
-										)	
+									else{
+										return L.marker(latlng, {icon: conditionMarker6}).bindPopup(popUpHTML)	
+									}
+								},
+								}
+								).addTo(mymap); 
+			assetLayer.addData(result);
+			mymap.fitBounds(assetLayer.getBounds());
+			}
+	});
+}
+
+function setUpReadOnlyClick() {
+	// create a geoJSON feature (in your assignment code this will be replaced
+	// by an AJAX call to load the asset points on the map
+	// and add it to the map and zoom to that location
+	// use the mapPoint variable so that we can remove this point layer on
+	// the on click functionality of the POINT should pop up partially populated condition form so that the user can select the condition they require
+	var baseComputerAddress = document.location.origin;
+	var currentUserId = user_id;
+	var dataAddress = '/api/geoJSONUserId/'+currentUserId;
+	var assetURL = baseComputerAddress + dataAddress;
+	$.ajax({url: assetURL, 
+			dataType: 'json', 
+			success: function(result){
+				var conditionMarker1 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'red'
+				});
+				var conditionMarker2 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'purple'
+				});
+				var conditionMarker3 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'pink'
+				});
+				var conditionMarker4 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'blue'
+				});
+				var conditionMarker5 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'green'
+				});
+				var conditionMarker6 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'gray'
+				});
+				assetLayer = L.geoJson(
+								result,{
+								pointToLayer: function(feature, latlng){
+									var conditionPopup = "<b>Latest condition situation: </b><br/>" + feature.properties.condition_description;
+									if (feature.properties.condition_description == 'Element is in very good condition'){
+										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(conditionPopup)	
+									}
+									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
+										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(conditionPopup)	
+									}
+									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
+										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(conditionPopup)	
+									}
+									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
+										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(conditionPopup)	
+									}
+									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
+										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(conditionPopup)	
+									}
+									else{
+										return L.marker(latlng, {icon: conditionMarker6}).bindPopup('No Condition Captured')
 									}
 								},
 								}
@@ -189,8 +226,9 @@ function setUpPointClick() {
 }
 
 function getPopupHTML(assetID, asset_name, installation_date, previousConditionValue){
-	var htmlString	= "<div id='asset_name'>"+asset_name+"</div><br>";
-	htmlString = htmlString +"<div id='installation_date'>Installation date: "+ installation_date + "</div>";
+	var htmlString	= "<div id='asset_name' hidden>"+asset_name+"</div>"+
+	"<div id='asset_name_text'>Asset Name: "+asset_name+"</div>";
+	htmlString = htmlString +"<div id='asset_id'>Asset ID: "+ assetID + "</div>";
 	htmlString = htmlString +"<div id='user_id' hidden>"+user_id+"</div>";
 	htmlString = htmlString +'<p>Select the condition description</p>';
 	htmlString = htmlString +"<input type='radio' name='condition_description' id='"+assetID+"_1' />Element is in very good condition<br />";
