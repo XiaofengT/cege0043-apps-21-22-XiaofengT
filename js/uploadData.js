@@ -92,17 +92,93 @@ function setUpPointClick() {
 	$.ajax({url: assetURL, 
 			dataType: 'json', 
 			success: function(result){
+				var conditionMarker1 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'red'
+				});
+				var conditionMarker2 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'gray'
+				});
+				var conditionMarker3 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'pink'
+				});
+				var conditionMarker4 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'blue'
+				});
+				var conditionMarker5 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'green'
+				});
+				var conditionMarker6 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'gray'
+				});
 				assetLayer = L.geoJson(
 								result,{
 								pointToLayer: function(feature, latlng){
-									return L.marker(latlng).bindPopup(
-										getPopupHTML(
-										feature.properties.asset_id, 
-										feature.properties.asset_name,
-										feature.properties.installation_date,
-										feature.properties.condition_description
-										)
-									)	
+									if (feature.properties.condition_description == 'Element is in very good condition'){
+										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(
+											getPopupHTML(
+											feature.properties.asset_id, 
+											feature.properties.asset_name,
+											feature.properties.installation_date,
+											feature.properties.condition_description
+											)
+										)	
+									}
+									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
+										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(
+											getPopupHTML(
+											feature.properties.asset_id, 
+											feature.properties.asset_name,
+											feature.properties.installation_date,
+											feature.properties.condition_description
+											)
+										)	
+									}
+									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
+										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(
+											getPopupHTML(
+											feature.properties.asset_id, 
+											feature.properties.asset_name,
+											feature.properties.installation_date,
+											feature.properties.condition_description
+											)
+										)	
+									}
+									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
+										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(
+											getPopupHTML(
+											feature.properties.asset_id, 
+											feature.properties.asset_name,
+											feature.properties.installation_date,
+											feature.properties.condition_description
+											)
+										)	
+									}
+									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
+										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(
+											getPopupHTML(
+											feature.properties.asset_id, 
+											feature.properties.asset_name,
+											feature.properties.installation_date,
+											feature.properties.condition_description
+											)
+										)	
+									}
+									if (feature.properties.condition_description == 'Unknown'){
+										return L.marker(latlng, {icon: conditionMarker6}).bindPopup(
+											getPopupHTML(
+											feature.properties.asset_id, 
+											feature.properties.asset_name,
+											feature.properties.installation_date,
+											feature.properties.condition_description
+											)
+										)	
+									}
 								},
 								}
 								).addTo(mymap); 
