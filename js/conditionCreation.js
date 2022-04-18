@@ -63,10 +63,10 @@ function deleteSingleCondition() {
 	    url: serviceUrl,
 	    crossDomain: true,
 	    type: "POST",
-	    success: function(data){dataDeleted(data);},
+	    success: function(data){conditionDeleted(data);},
 	    data: deleteString
 });	
 }
-function dataDeleted(data){
+function conditionDeleted(data){
     document.getElementById("deleteConditionResponse").innerHTML = JSON.stringify(data);
 }

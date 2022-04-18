@@ -28,11 +28,11 @@ function deleteSingleAsset() {
 	    url: serviceUrl,
 	    crossDomain: true,
 	    type: "POST",
-	    success: function(data){dataDeleted(data);},
+	    success: function(data){assetDeleted(data);},
 	    data: deleteString
 });	
 }
-function dataDeleted(data){
+function assetDeleted(data){
     document.getElementById("deleteAssetResponse").innerHTML = JSON.stringify(data);
 }
 

@@ -105,7 +105,7 @@ function getPopupHTML(assetID, asset_name, installation_date, previousConditionV
 	'<hr>'+
 	''+
 	'<label for="deleteID">Delete ID</label><input type="text" size="25" id="deleteID"/><br />'+
-	'<button id="deleteCondition" onclick="deleteSingleCondition()">Delete Record</button>'+
+	'<button id="deleteCondition" onclick="deleteSingleCondition()">Delete Condition</button>'+
 	'<div id="deleteConditionResponse">The result goes here</div>';
 	return htmlString;
 }
@@ -131,7 +131,7 @@ function basicFormHtml(e) {
 	'<hr>'+
 	''+
 	'<label for="deleteID">Delete ID</label><input type="text" size="25" id="deleteID"/><br />'+
-	'<button id="deleteAsset" onclick="deleteSingleAsset()">Delete Record</button>'+
+	'<button id="deleteAsset" onclick="deleteSingleAsset()">Delete Asset</button>'+
 	'<div id="deleteAssetResponse">The result goes here</div>';
 	
 	return myvar;
