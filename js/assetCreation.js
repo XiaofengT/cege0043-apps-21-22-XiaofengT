@@ -2,16 +2,20 @@ function saveNewAsset() {
 	
 	var asset_name = document.getElementById("asset_name").value;
 	var installation_date = document.getElementById("installation_date").value;
-	var postString = "asset_name="+asset_name +"&installation_date="+installation_date;
-	
-	// now get the geometry values
-	var latitude = document.getElementById("latitude").innerHTML;
-	var longitude = document.getElementById("longitude").innerHTML;
-	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
-	var user_id = document.getElementById("user_id").innerHTML;
-	postString = postString + "&user_id=" + user_id;
-	
-	assetProcessData(postString);
+	if (asset_name != '' && installation_date != '') {
+		var postString = "asset_name="+asset_name +"&installation_date="+installation_date;
+		// now get the geometry values
+		var latitude = document.getElementById("latitude").innerHTML;
+		var longitude = document.getElementById("longitude").innerHTML;
+		postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
+		var user_id = document.getElementById("user_id").innerHTML;
+		postString = postString + "&user_id=" + user_id;
+		
+		assetProcessData(postString);
+	}
+	else{
+		alert("Please fill all the blanks!");
+	}
 
 }
 
