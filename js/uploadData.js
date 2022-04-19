@@ -29,26 +29,26 @@ function setMapClickEvent() {
 	// and the small and XS options for the condition option
 	// see here: https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
 	if (width < 992) {//the condition capture – 992px is defined as 'medium' by bootstrap
+		// set up a point with click functionality
+		if (mymap.hasLayer(assetLayer)){
+			mymap.removeLayer(assetLayer);
+		}
 		// cancel the map onclick event using off ..
 		mymap.off('click',onMapClick);
-		// set up a point with click functionality
-		if (!assetLayer){
 		setUpPointClick(); 
-		}
 		trackLocation();
-		//closestAssetPoint();
 	}
 	else { // the asset creation page
 		// remove the map point if it exists
-		if (typeof assetLayer !== 'undefined'){
+		if (mymap.hasLayer(assetLayer)){
 			mymap.removeLayer(assetLayer);
 		}
-		if (trackLocationLayer){
-			mymap.removeLayer(trackLocationLayer)
+		if (mymap.hasLayer(trackLocationLayer)){
+			mymap.removeLayer(trackLocationLayer);
 		}
 		// the on click functionality of the MAP should pop up a blank asset creation form
 		mymap.on('click', onMapClick);
-		mymap.off('click', setUpPointClick)
+		//mymap.off('click', setUpPointClick)
 		//if (!assetLayer){
 		setUpReadOnlyClick();
 		//}

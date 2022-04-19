@@ -1,8 +1,5 @@
 function checkCondition(data) {
 	var asset_name = document.getElementById("asset_name").innerHTML;
-	//var installation_date = document.getElementById("installation_date").innerHTML;
-	//var user_id = document.getElementById("user_id").innerHTML;
-	//var assetID = document.getElementById("asset_"+data).innerHTML;
 	var previousConditionValue = document.getElementById("previousConditionValue_"+data).innerHTML;
 	var postString = "asset_name="+asset_name;
 	
@@ -52,6 +49,15 @@ function conditionProcessData(postString) {
 function conditionDataUploaded(data) {
     // change the DIV to show the response
     document.getElementById("conditionResult").innerHTML = JSON.stringify(data);
+	var getNumURL = document.location.origin + "/api/userConditionReports/" + user_id;
+	$.ajax({
+		url: getNumURL,
+		crossDomain: true,
+		async: false,
+		success: function(result){
+			alert("You have submitted " + result[0]["array_to_json"][0]["num_reports"] + " condition reports.");
+		}
+	}); 
 }
 
 function deleteSingleCondition() {
