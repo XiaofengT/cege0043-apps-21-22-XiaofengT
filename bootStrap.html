@@ -193,9 +193,10 @@
 <script>
 function loadMap() {
 	// map loading code goes here
-	getUserIdLoadMap();
+	getUserId();
+	loadLeafletMap();
+	setMapClickEvent();
 	window.addEventListener('resize', setMapClickEvent);
-	//setMapClickEvent();
 }
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -21,6 +21,7 @@ var popup = L.popup(); // keep this as a global variable
 var assetLayer; // store the geoJSON feature so that we can remove it if the screen is resized
 // create an array to store all the location tracking points
 var trackLocationLayer = [];
+var geoLocationID;
 function setMapClickEvent() {
 	// get the window width
 	width = $(window).width();
@@ -35,6 +36,7 @@ function setMapClickEvent() {
 		//if (!assetLayer){
 		setUpPointClick(); 
 		//}
+		//closestAssetPoint();
 	}
 	else { // the asset creation page
 		// remove the map point if it exists
@@ -53,14 +55,12 @@ function setMapClickEvent() {
 	}
 }
 
-function getUserIdLoadMap() {
+function getUserId() {
 	var baseComputerAddress = document.location.origin;
 	var currentUserId = '/api/getUserId';
 	var getIdURL = baseComputerAddress + currentUserId;
-	$.ajax({url: getIdURL, crossDomain: true, success: function(result){
+	$.ajax({url: getIdURL, crossDomain: true, async: false, success: function(result){
 		 user_id = result["user_id"];
-		 loadLeafletMap();
-		 setMapClickEvent();
 	}});
 }
 
@@ -74,7 +74,10 @@ function trackLocation(){
 function showPosition(position){
 	removePositionPoints();
 	//add the new point into the array
-	trackLocationLayer.push(L.marker([position.coords.latitude,position.coords.longitude]).addTo(mymap));
+	var userlat = position.coords.latitude;
+	var userlng = position.coords.longitude;
+	trackLocationLayer.push(L.marker([userlat,userlng]).addTo(mymap));
+	console.log(trackLocationLayer);
 }
 
 // remove the previous mark if user moves
@@ -278,6 +281,34 @@ function basicFormHtml(e) {
 	
 	return myvar;
 }
+
+function closestAssetPoint() {
+	// take the leaflet formdata layer
+	// go through each point one by one
+	// and measure the distance to Warren Street
+	// for the closest point show the pop up of that point
+	var minDistance = 100000000000;
+	var closestPoint = 0;
+	var userlat = trackLocationLayer.pop()._latlng.lat;
+	var userlng = trackLocationLayer.pop()._latlng.lng;
+	assetLayer.eachLayer(function(layer) {
+	var distance = calculateDistance(userlat,
+		userlng,layer.getLatLng().lat, layer.getLatLng().lng, 'K');
+		if (distance < minDistance){
+			minDistance = distance;
+			closestPoint = layer.feature.properties.id;
+		}
+	});
+	// for this to be a proximity alert, the minDistance must be 
+	// closer than a given distance - you can check that here
+	// using an if statement
+	// show the popup for the closest point
+	assetLayer.eachLayer(function(layer) {
+		if (layer.feature.properties.id == closestPoint){
+			layer.openPopup();
+		}
+	});
+} 
 
 
 function menu1(){
