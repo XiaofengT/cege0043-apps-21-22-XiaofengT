@@ -32,9 +32,9 @@ function setMapClickEvent() {
 		// cancel the map onclick event using off ..
 		mymap.off('click',onMapClick);
 		// set up a point with click functionality
-		//if (!assetLayer){
+		if (!assetLayer){
 		setUpPointClick(); 
-		//}
+		}
 		trackLocation();
 		//closestAssetPoint();
 	}
@@ -70,7 +70,6 @@ function trackLocation(){
 	}else{
 		document.getElementById('showLocation').innerHTML = "Geolocation is not supported by this browser.";
 	}
-	console.log(geoLocationID)
 }
 function showPosition(position){
 	removePositionPoints();
