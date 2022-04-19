@@ -2,29 +2,29 @@ function checkCondition(data) {
 	var asset_name = document.getElementById("asset_name").innerHTML;
 	//var installation_date = document.getElementById("installation_date").innerHTML;
 	//var user_id = document.getElementById("user_id").innerHTML;
-	var assetID = document.getElementById("asset_"+data).innerHTML;
-	var previousConditionValue = document.getElementById("previousConditionValue_"+data).value;
+	//var assetID = document.getElementById("asset_"+data).innerHTML;
+	var previousConditionValue = document.getElementById("previousConditionValue_"+data).innerHTML;
 	var postString = "asset_name="+asset_name;
 	
 	if (document.getElementById(data+"_1").checked) {
 		postString = postString + "&condition_description=Element is in very good condition"
-		conditionValue = 1;
+		conditionValue = "Element is in very good condition";
 	}
 	if (document.getElementById(data+"_2").checked) {
 		postString = postString + "&condition_description=Some aesthetic defects, needs minor repair"
-		conditionValue = 2;
+		conditionValue = "Some aesthetic defects, needs minor repair";
 	}
 	if (document.getElementById(data+"_3").checked) {
 		postString = postString + "&condition_description=Functional degradation of some parts, needs maintenance"
-		conditionValue = 3;
+		conditionValue = "Functional degradation of some parts, needs maintenance";
 	}
 	if (document.getElementById(data+"_4").checked) {
 		postString = postString + "&condition_description=Not working and maintenance must be done as soon as reasonably possible"
-		conditionValue = 4;
+		conditionValue = "Not working and maintenance must be done as soon as reasonably possible";
 	}
 	if (document.getElementById(data+"_5").checked) {
 		postString = postString + "&condition_description=Not working and needs immediate, urgent maintenance"
-		conditionValue = 5;
+		conditionValue = "Not working and needs immediate, urgent maintenance";
 	}
 	if (conditionValue == previousConditionValue) {
 		alert("The condition value already exist!");

@@ -22,8 +22,6 @@ var assetLayer; // store the geoJSON feature so that we can remove it if the scr
 // create an array to store all the location tracking points
 var trackLocationLayer = [];
 function setMapClickEvent() {
-	console.log(assetLayer);
-	console.log(trackLocationLayer)
 	// get the window width
 	width = $(window).width();
 	// we use the bootstrap Medium and Large options for the asset location capture
@@ -34,9 +32,9 @@ function setMapClickEvent() {
 		mymap.off('click',onMapClick);
 		trackLocation();
 		// set up a point with click functionality
-		if (!assetLayer){
+		//if (!assetLayer){
 		setUpPointClick(); 
-		}
+		//}
 	}
 	else { // the asset creation page
 		// remove the map point if it exists
@@ -48,7 +46,10 @@ function setMapClickEvent() {
 		}
 		// the on click functionality of the MAP should pop up a blank asset creation form
 		mymap.on('click', onMapClick);
+		mymap.off('click', setUpPointClick)
+		//if (!assetLayer){
 		setUpReadOnlyClick();
+		//}
 	}
 }
 
@@ -59,6 +60,7 @@ function getUserIdLoadMap() {
 	$.ajax({url: getIdURL, crossDomain: true, success: function(result){
 		 user_id = result["user_id"];
 		 loadLeafletMap();
+		 setMapClickEvent();
 	}});
 }
 
