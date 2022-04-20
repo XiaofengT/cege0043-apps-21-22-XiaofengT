@@ -191,3 +191,14 @@ function removeMissingCondition() {
 		setUpPointClick();
 	}
 }
+
+function getDailyReportsRates() {
+	var reportJSON;
+	var baseComputerAddress = document.location.origin;
+	var getReportString = "/api/dailyParticipationRates";
+	var getReportURL = baseComputerAddress + getReportString;
+	$.ajax({url: getReportURL, crossDomain: true, async: false, success: function(result){
+		 reportJSON = result;
+	}});
+	return reportJSON;
+}
