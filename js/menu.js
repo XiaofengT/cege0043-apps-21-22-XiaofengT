@@ -63,3 +63,77 @@ function removeFiveClosestAssets() {
 		setUpPointClick();
 	}
 }
+
+
+var lastFiveConditionLayer;
+function lastFiveConditionLocation(){
+	if(mymap.hasLayer(lastFiveConditionLayer)){
+		mymap.removeLayer(lastFiveConditionLayer);
+	}
+	if(mymap.hasLayer(assetLayer)){
+		mymap.removeLayer(assetLayer);
+	}
+	lastFiveConditionData()
+}
+
+function lastFiveConditionData() {
+	var lastFiveConditionURL = document.location.origin + '/api/lastFiveConditionReports/' + user_id;
+	$.ajax({url: lastFiveConditionURL, 
+			dataType: 'json', 
+			async: false,
+			success: function(result){
+				var conditionMarker1 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'red'
+				});
+				var conditionMarker2 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'purple'
+				});
+				var conditionMarker3 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'pink'
+				});
+				var conditionMarker4 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'blue'
+				});
+				var conditionMarker5 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'green'
+				});
+				var conditionMarker6 = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'gray'
+				});
+				lastFiveConditionLayer = L.geoJson(
+								result,{
+								pointToLayer: function(feature, latlng){
+									var popUpHTML = "<b>Latest condition situation: </b><br/>" + feature.properties.condition_description;
+									if (feature.properties.condition_description == 'Element is in very good condition'){
+										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(popUpHTML)	
+									}
+									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
+										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(popUpHTML)	
+									}
+									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
+										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(popUpHTML)	
+									}
+									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
+										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(popUpHTML)	
+									}
+									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
+										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(popUpHTML)	
+									}
+									else{
+										return L.marker(latlng, {icon: conditionMarker6}).bindPopup(popUpHTML)	
+									}
+								},
+								}
+								).addTo(mymap); 
+			lastFiveConditionLayer.addData(result);
+			mymap.fitBounds(lastFiveConditionLayer.getBounds());
+			}
+	});
+}
+
