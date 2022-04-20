@@ -280,12 +280,18 @@ function showReportGraph() {
 
 
 function bestConditionAssetData() {
+	document.getElementById("tablediv").style.top="15%";
+	var widtha = document.getElementById("tablediv").offsetWidth;
+	var heighta = document.getElementById("tablediv").offsetHeight;
+	// keep the existing HTML as there is a button that is needed
+	document.getElementById("tablediv").innerHTML=document.getElementById("tablediv").innerHTML+'<div class="h-75 w-75"><svg width="'+widtha+'" height="'+heighta+'" id="svg1"></svg></div>'
 	var bestConditionURL = document.location.origin + "/api/assetsInGreatCondition";
 	$.ajax({url: bestConditionURL, success: function(result) {
 		var datas = result[0]["array_to_json"];
 		
 		// generate a string for the table
-		var tableHTML = "<table id='data3' class='display' style='width:100%'>";
+		var tableHTML = '<button type="button"class="close" aria-label="Close" onclick="closeTable();">Close Table</button>' + 
+		"<table id='data3' class='display' style='width:100%'>";
 		
 		// add the column titles
         tableHTML += "<thead align><tr><td><h3>Asset ID</h3></td><td><h3>Asset Name</h3></td><td><h3>Installation Date</h3></td><td><h3>User ID</h3></td></tr></thead><tbody>";
@@ -338,12 +344,6 @@ function bestConditionAssetData() {
 } 
 
 function createDataTable(){
-	document.getElementById("tablediv").style.top="15%";
-	var widtha = document.getElementById("tablediv").offsetWidth;
-	var heighta = document.getElementById("tablediv").offsetHeight;
-	// keep the existing HTML as there is a button that is needed
-	document.getElementById("tablediv").innerHTML=document.getElementById("tablediv").innerHTML+'<div class="h-75 w-75"><svg width="'+widtha+'" height="'+heighta+'" id="svg1"></svg></div>'
-	
             dataTable = $('#data3').DataTable({
               paging: true,
               pageLength: 5,
