@@ -182,3 +182,12 @@ function missingConditionData() {
 			}
 	});
 }
+
+function removeMissingCondition() {
+	if(mymap.hasLayer(missingConditionLayer)){
+		mymap.removeLayer(missingConditionLayer);
+	}
+	if(!mymap.hasLayer(assetLayer)){
+		setUpPointClick();
+	}
+}
