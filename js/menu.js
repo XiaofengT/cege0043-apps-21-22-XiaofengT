@@ -13,13 +13,19 @@ function getUserRanking(){
 var latlngString;
 var fiveClosestAssetsLayer;
 function fiveClosestAssetsLocation(){
+	if(mymap.hasLayer(fiveClosestAssetsLayer)){
+		mymap.removeLayer(fiveClosestAssetsLayer);
+	}
+	if(mymap.hasLayer(assetLayer)){
+		mymap.removeLayer(assetLayer);
+	}
 	if(navigator.geolocation){
-		navigator.geolocation.getCurrentPosition(function(position){
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
-			latlngString = lat + "/" + lng;
-			fiveClosestAssetsdata();
-		});
+	navigator.geolocation.getCurrentPosition(function(position){
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
+		latlngString = lat + "/" + lng;
+		fiveClosestAssetsdata();
+	});
 	}else{
 		alert("Geolocation is not supported by this browser.");
 	}
@@ -33,7 +39,7 @@ function fiveClosestAssetsdata() {
 			success: function(result){
 				var conditionMarker = L.AwesomeMarkers.icon({
 					icon: 'play',
-					markerColor: 'hollow'
+					markerColor: 'yellow'
 				});
 				fiveClosestAssetsLayer = L.geoJson(
 								result,{
