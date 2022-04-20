@@ -203,13 +203,13 @@ function showReportGraph() {
 	// keep the existing HTML as there is a button that is needed
 	document.getElementById("graphWrapper").innerHTML=document.getElementById("graphWrapper").innerHTML+'<div class="h-75 w-75"><svg width="'+widtha+'" height="'+heighta+'" id="svg1"></svg></div>'
 	const svg = d3.select("#svg1"),
-	margin = {top: 20, right: 20, bottom: 30, left: 50},
-	width = +svg.attr("width") - margin.left - margin.right,
-	height = +svg.attr("height") - margin.top - margin.bottom,
-	x = d3.scaleBand().rangeRound([0, width]).padding(0.2),
-	y = d3.scaleLinear().rangeRound([height, 0]),
-	g = svg.append("g")
-		.attr("transform", `translate(${margin.left},${margin.top})`); 
+		margin = {top: 20, right: 20, bottom: 30, left: 50},
+		width = +svg.attr("width") - margin.left - margin.right,
+		height = +svg.attr("height") - margin.top - margin.bottom,
+		x = d3.scaleBand().rangeRound([0, width]).padding(0.2),
+		y = d3.scaleLinear().rangeRound([height, 0]),
+		g = svg.append("g")
+			.attr("transform", `translate(${margin.left},${margin.top})`); 
 	var baseComputerAddress = document.location.origin;
 	var getReportString = "/api/dailyParticipationRates";
 	var getReportURL = baseComputerAddress + getReportString;
@@ -225,14 +225,24 @@ function showReportGraph() {
 		g.append("g")
 			.attr("class", "axis axis-y")
 			.call(d3.axisLeft(y).ticks(10).tickSize(8)); 
-		g.selectAll(".bar")
+		g.selectAll(".bar_submitted")
 			.data(data)
 			.enter().append("rect")
-			.attr("class", "bar")
+			.attr("class", "bar_submitted")
+			.attr("fill", "#17becf")
 			.attr("x", d => x(d.day))
 			.attr("y", d => y(d.reports_submitted))
 			.attr("width", x.bandwidth())
 			.attr("height", d => height - y(d.reports_submitted));
+		g.selectAll(".bar_notworking")
+			.data(data)
+			.enter().append("rect")
+			.attr("class", "bar_notworking")
+			.attr("fill", "#1f77b4")
+			.attr("x", d => x(d.day))
+			.attr("y", d => y(d.reports_not_working))
+			.attr("width", x.bandwidth())
+			.attr("height", d => height - y(d.reports_not_working));
 		// .catch(err => {
 		// svg.append("text")         
 			// .attr("y", 20)
