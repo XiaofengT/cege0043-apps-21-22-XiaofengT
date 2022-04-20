@@ -20,10 +20,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
 
     <link href="css/sb-admin-2.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+	
+	<!-- the following links incorporate the CSS required for custom icon creation -->
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+	<script src="js/leaflet.awesome-markers.js"></script>
 	<script
 	src="https://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	crossorigin="anonymous"></script>  
+	
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<!-- functionality for data export -->
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -33,6 +48,7 @@
 	<script src="js/uploadData.js"></script>
 	<script src="js/assetCreation.js"></script>
 	<script src="js/conditionCreation.js"></script>
+	<script src="js/menu.js"></script>
 	
 	<!-- set the style for the bar graph -->
 	<style>
@@ -76,7 +92,7 @@
 		
 		<!-- Asset Location menu-->
 		<li class="nav-item d-none d-lg-block" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu1()" aria-expanded="true" aria-controls="collapseOne">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="bestConditionAssetData()" aria-expanded="true" aria-controls="collapseOne">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>List of Assets in Best Condition</span>
@@ -85,7 +101,7 @@
         </li>
 		
 		<li class="nav-item d-none d-lg-block" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu2()" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="showReportGraph()" aria-expanded="true" aria-controls="collapseTwo">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>Daily Reporting Rates Graph</span>
@@ -105,7 +121,7 @@
         </li>
 		
 		<li class="nav-item d-lg-none" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu4()" aria-expanded="true" aria-controls="collapseFour">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="getUserRanking()" aria-expanded="true" aria-controls="collapseFour">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>User Ranking</span>
@@ -114,7 +130,7 @@
         </li>
 		
 		<li class="nav-item d-lg-none" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu5()" aria-expanded="true" aria-controls="collapseFive">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="fiveClosestAssetsLocation()" aria-expanded="true" aria-controls="collapseFive">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>Add Layer – 5 closest assets</span>
@@ -123,7 +139,7 @@
         </li>
 		
 		<li class="nav-item d-lg-none" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu6()" aria-expanded="true" aria-controls="collapseSix">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="removeFiveClosestAssets()" aria-expanded="true" aria-controls="collapseSix">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>Remove Layer – 5 closest assets</span>
@@ -132,7 +148,7 @@
         </li>
 		
 		<li class="nav-item d-lg-none" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu7()" aria-expanded="true" aria-controls="collapseSeven">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="lastFiveConditionLocation()" aria-expanded="true" aria-controls="collapseSeven">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>Add Layer – last 5 reports</span>
@@ -141,7 +157,7 @@
         </li>
 		
 		<li class="nav-item d-lg-none" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu8()" aria-expanded="true" aria-controls="collapseEight">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="removeLastFiveCondition()" aria-expanded="true" aria-controls="collapseEight">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>Remove Layer – last 5 reports</span>
@@ -150,7 +166,7 @@
         </li>
 		
 		<li class="nav-item d-lg-none" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu9()" aria-expanded="true" aria-controls="collapseNine">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="missingConditionLocation()" aria-expanded="true" aria-controls="collapseNine">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>Add Layer – not rated in the last 3 days</span>
@@ -159,7 +175,7 @@
         </li>
 		
 		<li class="nav-item d-lg-none" >
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="menu10()" aria-expanded="true" aria-controls="collapseTen">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="" onclick="removeMissingCondition()" aria-expanded="true" aria-controls="collapseTen">
             <!-- the next line is the cog image -->
             <i class="fas fa-fw fa-cog"></i>
             <span>Remove Layer – not rated in the last 3 days</span>
@@ -172,11 +188,13 @@
 
        <div id="content-wrapper" class="d-flex flex-column">
        <div id="mapContainer" class="h-100 w-100" style="z-index:0;"></div>
-      </div>
       <!-- End of Main Content -->
+	  </div>
 	  <div id="graphWrapper" class="h-75 w-75 d-flex flex-column"
 	  style="background-color: white; display: inlineblock;position:absolute; top:-9999;left:15%;"><button type="button"
 	  class="close" aria-label="Close" onclick="closeGraph();">Close Graph</button></div>
+	  <div id="tablediv" class="h-75 w-75 d-flex flex-column"
+	  style="background-color: white; display: inlineblock;position:absolute; top:-9999;left:15%;"></div>
     </div>
     <!-- end of wrapper -->
 	
@@ -188,9 +206,10 @@
 <script>
 function loadMap() {
 	// map loading code goes here
+	getUserId();
 	loadLeafletMap();
-	window.addEventListener('resize', setMapClickEvent);
 	setMapClickEvent();
+	window.addEventListener('resize', setMapClickEvent);
 }
 
 document.addEventListener('DOMContentLoaded', function() {

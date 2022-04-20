@@ -1,32 +1,27 @@
 function checkCondition(data) {
 	var asset_name = document.getElementById("asset_name").innerHTML;
-	var installation_date = document.getElementById("installation_date").innerHTML;
-	var user_id = document.getElementById("user_id").innerHTML;
-	var assetID = document.getElementById("asset_"+data).innerHTML;
-	var previousConditionValue = document.getElementById("previousConditionValue_"+data).value;
-	var postString = "assetID="+assetID+"&Old_condition_value="+previousConditionValue+
-	"&asset_name="+asset_name+"&installation_date="+installation_date+"&user_id="+user_id;
+	var previousConditionValue = document.getElementById("previousConditionValue_"+data).innerHTML;
+	var postString = "asset_name="+asset_name;
 	
-	try{
 	if (document.getElementById(data+"_1").checked) {
-		postString = postString + "&conditionvalue=1"
-		conditionValue = 1;
+		postString = postString + "&condition_description=Element is in very good condition"
+		conditionValue = "Element is in very good condition";
 	}
 	if (document.getElementById(data+"_2").checked) {
-		postString = postString + "&conditionvalue=2"
-		conditionValue = 2;
+		postString = postString + "&condition_description=Some aesthetic defects, needs minor repair"
+		conditionValue = "Some aesthetic defects, needs minor repair";
 	}
 	if (document.getElementById(data+"_3").checked) {
-		postString = postString + "&conditionvalue=3"
-		conditionValue = 3;
+		postString = postString + "&condition_description=Functional degradation of some parts, needs maintenance"
+		conditionValue = "Functional degradation of some parts, needs maintenance";
 	}
 	if (document.getElementById(data+"_4").checked) {
-		postString = postString + "&conditionvalue=4"
-		conditionValue = 4;
+		postString = postString + "&condition_description=Not working and maintenance must be done as soon as reasonably possible"
+		conditionValue = "Not working and maintenance must be done as soon as reasonably possible";
 	}
 	if (document.getElementById(data+"_5").checked) {
-		postString = postString + "&conditionvalue=5"
-		conditionValue = 5;
+		postString = postString + "&condition_description=Not working and needs immediate, urgent maintenance"
+		conditionValue = "Not working and needs immediate, urgent maintenance";
 	}
 	if (conditionValue == previousConditionValue) {
 		alert("The condition value already exist!");
@@ -35,16 +30,12 @@ function checkCondition(data) {
 		conditionProcessData(postString);
 		document.getElementById("previousConditionValue_"+data).value = conditionValue;
 	}
-	}
-	catch(err){
-		alert('Please select a condition description!')
-	}
 }
 
 function conditionProcessData(postString) {
 	alert(postString);
 
-	var serviceUrl=  document.location.origin + "/api/testCRUD";
+	var serviceUrl=  document.location.origin + "/api/insertConditionInformation";
    $.ajax({
     url: serviceUrl,
     crossDomain: true,
@@ -58,4 +49,30 @@ function conditionProcessData(postString) {
 function conditionDataUploaded(data) {
     // change the DIV to show the response
     document.getElementById("conditionResult").innerHTML = JSON.stringify(data);
+	var getNumURL = document.location.origin + "/api/userConditionReports/" + user_id;
+	$.ajax({
+		url: getNumURL,
+		crossDomain: true,
+		async: false,
+		success: function(result){
+			alert("You have submitted " + result[0]["array_to_json"][0]["num_reports"] + " condition reports.");
+		}
+	}); 
+}
+
+function deleteSingleCondition() {
+	var deleteID = document.getElementById("deleteID").value;
+	console.log(deleteID);
+	var deleteString = "id="+deleteID;
+	var serviceUrl= document.location.origin + "/api/deleteConditionReport";
+	$.ajax({
+	    url: serviceUrl,
+	    crossDomain: true,
+	    type: "POST",
+	    success: function(data){conditionDeleted(data);},
+	    data: deleteString
+});	
+}
+function conditionDeleted(data){
+    document.getElementById("deleteConditionResponse").innerHTML = JSON.stringify(data);
 }
