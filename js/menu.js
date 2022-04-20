@@ -338,7 +338,12 @@ function bestConditionAssetData() {
 } 
 
 function createDataTable(){
-
+	document.getElementById("tablediv").style.top="15%";
+	var widtha = document.getElementById("tablediv").offsetWidth;
+	var heighta = document.getElementById("tablediv").offsetHeight;
+	// keep the existing HTML as there is a button that is needed
+	document.getElementById("tablediv").innerHTML=document.getElementById("tablediv").innerHTML+'<div class="h-75 w-75"><svg width="'+widtha+'" height="'+heighta+'" id="svg1"></svg></div>'
+	
             dataTable = $('#data3').DataTable({
               paging: true,
               pageLength: 5,
@@ -377,4 +382,8 @@ function createDataTable(){
 
                 dataTable.draw();
           dataTable.columns.adjust().draw();
+}
+
+function closeTable() {
+	document.getElementById("tablediv").style.top = "-9999px";
 }
