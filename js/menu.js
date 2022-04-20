@@ -73,7 +73,7 @@ function lastFiveConditionLocation(){
 	if(mymap.hasLayer(assetLayer)){
 		mymap.removeLayer(assetLayer);
 	}
-	lastFiveConditionData()
+	lastFiveConditionData();
 }
 
 function lastFiveConditionData() {
@@ -145,4 +145,40 @@ function removeLastFiveCondition() {
 	if(!mymap.hasLayer(assetLayer)){
 		setUpPointClick();
 	}
+}
+
+var missingConditionLayer;
+function missingConditionLocation(){
+	if(mymap.hasLayer(missingConditionLayer)){
+		mymap.removeLayer(missingConditionLayer);
+	}
+	if(mymap.hasLayer(assetLayer)){
+		mymap.removeLayer(assetLayer);
+	}
+	missingConditionData();
+}
+
+function missingConditionData() {
+	var missingConditionURL = document.location.origin + '/api/conditionReportMissing/' + user_id;
+	$.ajax({url: missingConditionURL, 
+			dataType: 'json', 
+			async: false,
+			success: function(result){
+				var conditionMarker = L.AwesomeMarkers.icon({
+					icon: 'play',
+					markerColor: 'gray'
+				});
+				missingConditionLayer = L.geoJson(
+								result,{
+								pointToLayer: function(feature, latlng){
+									var popUpHTML = "<b>Asset Name: </b><br/>" + feature.properties.asset_name + "<br/>" +
+									"<b>Missing condition situation.</b>";
+									return L.marker(latlng, {icon: conditionMarker}).bindPopup(popUpHTML);	
+								},
+								}
+								).addTo(mymap); 
+			missingConditionLayer.addData(result);
+			mymap.fitBounds(missingConditionLayer.getBounds());
+			}
+	});
 }
