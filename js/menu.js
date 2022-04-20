@@ -224,7 +224,29 @@ function showReportGraph() {
 			.call(d3.axisBottom(x));
 		g.append("g")
 			.attr("class", "axis axis-y")
-			.call(d3.axisLeft(y).ticks(10).tickSize(8)); 
+			.call(d3.axisLeft(y).ticks(10).tickSize(8));
+		g.append("circle")
+			.attr("cx",550)
+			.attr("cy",30)
+			.attr("r", 6)
+			.style("fill", "#17becf");
+		g.append("circle")
+			.attr("cx",550)
+			.attr("cy",60)
+			.attr("r", 6)
+			.style("fill", "#1f77b4");
+		g.append("text")
+			.attr("x",570)
+			.attr("y",30)
+			.text("Report submitted")
+			.style("font-size", "15px")
+			.attr("alignment-baseline","middle");
+		g.append("text")
+			.attr("x",570)
+			.attr("y",60)
+			.text("Report not working")
+			.style("font-size", "15px")
+			.attr("alignment-baseline","middle");
 		g.selectAll(".bar_submitted")
 			.data(data)
 			.enter().append("rect")
