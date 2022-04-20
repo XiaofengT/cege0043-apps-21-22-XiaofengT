@@ -54,3 +54,12 @@ function fiveClosestAssetsdata() {
 			}
 	});
 }
+
+function removeFiveClosestAssets() {
+	if(mymap.hasLayer(fiveClosestAssetsLayer)){
+		mymap.removeLayer(fiveClosestAssetsLayer);
+	}
+	if(!mymap.hasLayer(assetLayer)){
+		setUpPointClick();
+	}
+}
