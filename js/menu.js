@@ -192,6 +192,10 @@ function removeMissingCondition() {
 	}
 }
 
+function closeGraph() {
+	document.getElementById("graphWrapper").style.top = "-9999px";
+}
+
 function showReportGraph() {
 	document.getElementById("graphWrapper").style.top="15%";
 	var widtha = document.getElementById("graphWrapper").offsetWidth;
