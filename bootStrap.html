@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
 
     <link href="css/sb-admin-2.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 	
 	<!-- the following links incorporate the CSS required for custom icon creation -->
 	<link rel="stylesheet" href="css/ionicons.min.css">
@@ -29,6 +30,15 @@
 	src="https://code.jquery.com/jquery-3.4.1.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	crossorigin="anonymous"></script>  
+	
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<!-- functionality for data export -->
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -178,8 +188,9 @@
 
        <div id="content-wrapper" class="d-flex flex-column">
        <div id="mapContainer" class="h-100 w-100" style="z-index:0;"></div>
-      </div>
+      </div id="tablediv"></div>
       <!-- End of Main Content -->
+	  <div>
 	  <div id="graphWrapper" class="h-75 w-75 d-flex flex-column"
 	  style="background-color: white; display: inlineblock;position:absolute; top:-9999;left:15%;"><button type="button"
 	  class="close" aria-label="Close" onclick="closeGraph();">Close Graph</button></div>
