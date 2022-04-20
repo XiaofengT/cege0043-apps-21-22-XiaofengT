@@ -277,3 +277,104 @@ function showReportGraph() {
 		// });
 	}});
 }
+
+
+function bestConditionAssetData() {
+	var bestConditionURL = document.location.origin + "/api/assetsInGreatCondition";
+	$.ajax({url: bestConditionURL, success: function(result) {
+		var datas = result[0]["array_to_json"];
+		
+		// generate a string for the table
+		var tableHTML = "<table id='data3' class='display' style='width:100%'>";
+		
+		// add the column titles
+        tableHTML += "<thead align><tr><td><h3>Asset ID</h3></td><td><h3>Asset Name</h3></td><td><h3>Installation Date</h3></td><td><h3>User ID</h3></td></tr></thead><tbody>";
+		
+		for (i=0; i<datas.length; i++){
+			// add a new row
+			tableHTML += "<tr>";
+			
+			// add a new column 
+            tableHTML += "<td>";
+			// add the id
+            tableHTML += datas[i].id;
+            // close the column
+            tableHTML +="</td>";
+			
+			// add a new column 
+            tableHTML += "<td>";
+			// add the asset name
+            tableHTML += datas[i].asset_name;
+            // close the column
+            tableHTML +="</td>";
+			
+			// add a new column 
+            tableHTML += "<td>";
+			// add the installation date
+            tableHTML += datas[i].installation_date;
+            // close the column
+            tableHTML +="</td>";
+			
+			// add a new column 
+            tableHTML += "<td>";
+			// add the user id
+            tableHTML += datas[i].user_id;
+            // close the column
+            tableHTML +="</td>";
+			
+			//close the row
+            tableHTML +="</tr>";
+		}// end the loop
+		
+		// close the table
+		tableHTML +="<tbody></table>";
+
+		// update the DIV
+		document.getElementById("tablediv").innerHTML = tableHTML;
+		
+		createDataTable();
+
+	}})
+} 
+
+function createDataTable(){
+
+            dataTable = $('#data3').DataTable({
+              paging: true,
+              pageLength: 5,
+              lengthChange: true,
+                  lengthMenu: [5,8,10],
+              scrollX: "100%",
+              dom: 'Bfrtip',
+                  buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+    pageResize: true,
+              initComplete: function () {
+                    this.api().columns().every( function () {
+                      var column = this;
+                      var select = $('<select><option value=""></option></select>')
+                          .appendTo( $(column.header()))
+                          .on( 'change', function () {
+                              var val = $.fn.dataTable.util.escapeRegex(
+                                  $(this).val()
+                              );
+                              column
+                                  .search( val ? '^'+val+'$' : '', true, false )
+                                  .draw();
+                          }); // on change
+                        column.data().unique().sort().each( function ( d, j ) {
+                           select.append( '<option value="'+d+'">'+d+'</option>' )
+                        }); // column data
+                      }); // this.api
+                } // init complete
+                }); // data3 data table
+
+
+
+                dataTable.draw();
+          dataTable.columns.adjust().draw();
+}
