@@ -109,24 +109,25 @@ function lastFiveConditionData() {
 				lastFiveConditionLayer = L.geoJson(
 								result,{
 								pointToLayer: function(feature, latlng){
-									var popUpHTML = "<b>Latest condition situation: </b><br/>" + feature.properties.condition_description;
+									var popUpHTML = "<b>Asset Name: </b><br/>" + feature.properties.asset_name + "<br/>" +
+									"<b>Latest condition situation: </b><br/>" + feature.properties.condition_description;
 									if (feature.properties.condition_description == 'Element is in very good condition'){
-										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(popUpHTML)	
+										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(popUpHTML);	
 									}
 									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
-										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(popUpHTML)	
+										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(popUpHTML);
 									}
 									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
-										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(popUpHTML)	
+										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(popUpHTML);
 									}
 									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
-										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(popUpHTML)	
+										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(popUpHTML);
 									}
 									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
-										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(popUpHTML)	
+										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(popUpHTML);
 									}
 									else{
-										return L.marker(latlng, {icon: conditionMarker6}).bindPopup(popUpHTML)	
+										return L.marker(latlng, {icon: conditionMarker6}).bindPopup(popUpHTML);
 									}
 								},
 								}
@@ -137,3 +138,11 @@ function lastFiveConditionData() {
 	});
 }
 
+function removeLastFiveCondition() {
+	if(mymap.hasLayer(lastFiveConditionLayer)){
+		mymap.removeLayer(lastFiveConditionLayer);
+	}
+	if(!mymap.hasLayer(assetLayer)){
+		setUpPointClick();
+	}
+}
