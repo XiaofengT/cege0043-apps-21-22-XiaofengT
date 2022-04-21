@@ -46,7 +46,7 @@ function conditionProcessData(postString) {
     crossDomain: true,
     type: "POST",
     data: postString,
-    success: function(data){console.log(data); conditionDataUploaded(data);setUpPointClick();}
+    success: function(data){console.log(data); conditionDataUploaded(data);}
 
 }); 
 }
@@ -54,6 +54,7 @@ function conditionProcessData(postString) {
 function conditionDataUploaded(data) {
     // change the DIV to show the response
     document.getElementById("conditionResult").innerHTML = JSON.stringify(data);
+	setMapClickEvent();
 	var getNumURL = document.location.origin + "/api/userConditionReports/" + user_id;
 	$.ajax({
 		url: getNumURL,

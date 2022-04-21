@@ -60,7 +60,7 @@ function removeFiveClosestAssets() {
 		mymap.removeLayer(fiveClosestAssetsLayer);
 	}
 	if(!mymap.hasLayer(assetLayer)){
-		setUpPointClick();
+		setMapClickEvent();
 	}
 }
 
@@ -143,7 +143,7 @@ function removeLastFiveCondition() {
 		mymap.removeLayer(lastFiveConditionLayer);
 	}
 	if(!mymap.hasLayer(assetLayer)){
-		setUpPointClick();
+		setMapClickEvent();
 	}
 }
 
@@ -188,7 +188,7 @@ function removeMissingCondition() {
 		mymap.removeLayer(missingConditionLayer);
 	}
 	if(!mymap.hasLayer(assetLayer)){
-		setUpPointClick();
+		setMapClickEvent();
 	}
 }
 

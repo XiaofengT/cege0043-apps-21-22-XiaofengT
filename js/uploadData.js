@@ -25,33 +25,25 @@ var geoLocationID;
 function setMapClickEvent() {
 	// get the window width
 	width = $(window).width();
+	while (mymap.hasLayer(assetLayer)){
+		mymap.removeLayer(assetLayer);
+	}
 	// we use the bootstrap Medium and Large options for the asset location capture
 	// and the small and XS options for the condition option
 	// see here: https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
 	if (width < 992) {//the condition capture – 992px is defined as 'medium' by bootstrap
-		// set up a point with click functionality
-		if (mymap.hasLayer(assetLayer)){
-			mymap.removeLayer(assetLayer);
-		}
 		// cancel the map onclick event using off ..
 		mymap.off('click',onMapClick);
+		// set up a point with click functionality
 		setUpPointClick(); 
 		trackLocation();
 	}
 	else { // the asset creation page
 		// remove the map point if it exists
-		if (mymap.hasLayer(assetLayer)){
-			mymap.removeLayer(assetLayer);
-		}
-		if (mymap.hasLayer(trackLocationLayer)){
-			mymap.removeLayer(trackLocationLayer);
-		}
+		removePositionPoints();
 		// the on click functionality of the MAP should pop up a blank asset creation form
 		mymap.on('click', onMapClick);
-		//mymap.off('click', setUpPointClick)
-		//if (!assetLayer){
 		setUpReadOnlyClick();
-		//}
 	}
 }
 
