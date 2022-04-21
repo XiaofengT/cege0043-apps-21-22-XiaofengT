@@ -45,7 +45,7 @@ function assetProcessData(postString) {
     crossDomain: true,
     type: "POST",
     data: postString,
-    success: function(data){console.log(data); assetDataUploaded(data);}
+    success: function(data){console.log(data); assetDataUploaded(data);setUpReadOnlyClick();}
 
 }); 
 }
