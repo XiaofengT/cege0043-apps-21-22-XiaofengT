@@ -140,16 +140,16 @@ function setUpPointClick() {
 									if (feature.properties.condition_description == 'Element is in very good condition'){
 										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(popUpHTML)	
 									}
-									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
+									else if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
 										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(popUpHTML)	
 									}
-									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
+									else if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
 										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(popUpHTML)	
 									}
-									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
+									else if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
 										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(popUpHTML)	
 									}
-									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
+									else if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
 										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(popUpHTML)	
 									}
 									else{
@@ -208,16 +208,16 @@ function setUpReadOnlyClick() {
 									if (feature.properties.condition_description == 'Element is in very good condition'){
 										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(conditionPopup)	
 									}
-									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
+									else if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
 										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(conditionPopup)	
 									}
-									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
+									else if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
 										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(conditionPopup)	
 									}
-									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
+									else if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
 										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(conditionPopup)	
 									}
-									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
+									else if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
 										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(conditionPopup)	
 									}
 									else{
@@ -325,35 +325,3 @@ function closestAssetPoint(userlat, userlng) {
 		}
 	});
 } 
-
-
-function menu1(){
-	alert("this function shows list of assets in best condition "+arguments.callee.name);
-}
-function menu2(){
-	alert("this function shows daily reporting rates graph "+arguments.callee.name);
-}
-function menu3(){
-	alert("this function shows help "+arguments.callee.name);
-}
-function menu4(){
-	alert("this function shows user ranking "+arguments.callee.name);
-}
-function menu5(){
-	alert("this function add layer - 5 closest assets "+arguments.callee.name);
-}
-function menu6(){
-	alert("this function remove layer - 5 closest assets "+arguments.callee.name);
-}
-function menu7(){
-	alert("this function add layer - last 5 reports, colour coded "+arguments.callee.name);
-}
-function menu8(){
-	alert("this function remove layer - last 5 reports "+arguments.callee.name);
-}
-function menu9(){
-	alert("this function add layer - not rated in the last 3 days "+arguments.callee.name);
-}
-function menu10(){
-	alert("this function remove layer - not rated in the last 3 days "+arguments.callee.name);
-}

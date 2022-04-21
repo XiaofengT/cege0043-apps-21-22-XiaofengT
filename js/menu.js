@@ -114,16 +114,16 @@ function lastFiveConditionData() {
 									if (feature.properties.condition_description == 'Element is in very good condition'){
 										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(popUpHTML);	
 									}
-									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
+									else if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
 										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(popUpHTML);
 									}
-									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
+									else if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
 										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(popUpHTML);
 									}
-									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
+									else if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
 										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(popUpHTML);
 									}
-									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
+									else if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
 										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(popUpHTML);
 									}
 									else{
@@ -387,3 +387,15 @@ function createDataTable(){
 function closeTable() {
 	document.getElementById("tablediv").style.top = "-9999px";
 }
+
+function help() {
+	document.getElementById("helpdiv").style.top="15%";
+	var widtha = document.getElementById("helpdiv").offsetWidth;
+	var heighta = document.getElementById("helpdiv").offsetHeight;
+	// keep the existing HTML as there is a button that is needed
+	//document.getElementById("helpdiv").innerHTML=document.getElementById("helpdiv").innerHTML+'<div class="h-75 w-75"><svg width="'+widtha+'" height="'+heighta+'" id="svg1"></svg></div>'
+	var helpHTML = "<h1>Condition Survey Application User Guide</h1><br/>";
+	helpHTML += ""
+	document.getElementById("helpdiv").innerHTML = helpHTML;
+	
+} 

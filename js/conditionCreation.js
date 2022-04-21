@@ -7,23 +7,23 @@ function checkCondition(data) {
 		postString = postString + "&condition_description=Element is in very good condition"
 		conditionValue = "Element is in very good condition";
 	}
-	if (document.getElementById(data+"_2").checked) {
+	else if (document.getElementById(data+"_2").checked) {
 		postString = postString + "&condition_description=Some aesthetic defects, needs minor repair"
 		conditionValue = "Some aesthetic defects, needs minor repair";
 	}
-	if (document.getElementById(data+"_3").checked) {
+	else if (document.getElementById(data+"_3").checked) {
 		postString = postString + "&condition_description=Functional degradation of some parts, needs maintenance"
 		conditionValue = "Functional degradation of some parts, needs maintenance";
 	}
-	if (document.getElementById(data+"_4").checked) {
+	else if (document.getElementById(data+"_4").checked) {
 		postString = postString + "&condition_description=Not working and maintenance must be done as soon as reasonably possible"
 		conditionValue = "Not working and maintenance must be done as soon as reasonably possible";
 	}
-	if (document.getElementById(data+"_5").checked) {
+	else if (document.getElementById(data+"_5").checked) {
 		postString = postString + "&condition_description=Not working and needs immediate, urgent maintenance"
 		conditionValue = "Not working and needs immediate, urgent maintenance";
 	}
-	if (conditionValue == previousConditionValue) {
+	else if (conditionValue == previousConditionValue) {
 		alert("The condition value already exist!");
 	}
 	else{
