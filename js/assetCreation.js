@@ -53,6 +53,7 @@ function assetProcessData(postString) {
 function assetDataUploaded(data) {
     // change the DIV to show the response
     document.getElementById("responseDIV").innerHTML = JSON.stringify(data);
+	setMapClickEvent();
 }
 
 

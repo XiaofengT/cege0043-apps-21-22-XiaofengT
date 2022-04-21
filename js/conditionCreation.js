@@ -3,23 +3,24 @@ function checkCondition(data) {
 	var previousConditionValue = document.getElementById("previousConditionValue_"+data).innerHTML;
 	var postString = "asset_name="+asset_name;
 	
+	try{
 	if (document.getElementById(data+"_1").checked) {
 		postString = postString + "&condition_description=Element is in very good condition"
 		conditionValue = "Element is in very good condition";
 	}
-	if (document.getElementById(data+"_2").checked) {
+	else if (document.getElementById(data+"_2").checked) {
 		postString = postString + "&condition_description=Some aesthetic defects, needs minor repair"
 		conditionValue = "Some aesthetic defects, needs minor repair";
 	}
-	if (document.getElementById(data+"_3").checked) {
+	else if (document.getElementById(data+"_3").checked) {
 		postString = postString + "&condition_description=Functional degradation of some parts, needs maintenance"
 		conditionValue = "Functional degradation of some parts, needs maintenance";
 	}
-	if (document.getElementById(data+"_4").checked) {
+	else if (document.getElementById(data+"_4").checked) {
 		postString = postString + "&condition_description=Not working and maintenance must be done as soon as reasonably possible"
 		conditionValue = "Not working and maintenance must be done as soon as reasonably possible";
 	}
-	if (document.getElementById(data+"_5").checked) {
+	else if (document.getElementById(data+"_5").checked) {
 		postString = postString + "&condition_description=Not working and needs immediate, urgent maintenance"
 		conditionValue = "Not working and needs immediate, urgent maintenance";
 	}
@@ -29,6 +30,10 @@ function checkCondition(data) {
 	else{
 		conditionProcessData(postString);
 		document.getElementById("previousConditionValue_"+data).value = conditionValue;
+	}
+	}
+	catch(err){
+		alert('Please select a condition description!')
 	}
 }
 
@@ -49,6 +54,7 @@ function conditionProcessData(postString) {
 function conditionDataUploaded(data) {
     // change the DIV to show the response
     document.getElementById("conditionResult").innerHTML = JSON.stringify(data);
+	setMapClickEvent();
 	var getNumURL = document.location.origin + "/api/userConditionReports/" + user_id;
 	$.ajax({
 		url: getNumURL,

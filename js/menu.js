@@ -60,7 +60,7 @@ function removeFiveClosestAssets() {
 		mymap.removeLayer(fiveClosestAssetsLayer);
 	}
 	if(!mymap.hasLayer(assetLayer)){
-		setUpPointClick();
+		setMapClickEvent();
 	}
 }
 
@@ -114,16 +114,16 @@ function lastFiveConditionData() {
 									if (feature.properties.condition_description == 'Element is in very good condition'){
 										return L.marker(latlng, {icon: conditionMarker1}).bindPopup(popUpHTML);	
 									}
-									if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
+									else if (feature.properties.condition_description == 'Some aesthetic defects, needs minor repair'){
 										return L.marker(latlng, {icon: conditionMarker2}).bindPopup(popUpHTML);
 									}
-									if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
+									else if (feature.properties.condition_description == 'Functional degradation of some parts, needs maintenance'){
 										return L.marker(latlng, {icon: conditionMarker3}).bindPopup(popUpHTML);
 									}
-									if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
+									else if (feature.properties.condition_description == 'Not working and maintenance must be done as soon as reasonably possible'){
 										return L.marker(latlng, {icon: conditionMarker4}).bindPopup(popUpHTML);
 									}
-									if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
+									else if (feature.properties.condition_description == 'Not working and needs immediate, urgent maintenance'){
 										return L.marker(latlng, {icon: conditionMarker5}).bindPopup(popUpHTML);
 									}
 									else{
@@ -143,7 +143,7 @@ function removeLastFiveCondition() {
 		mymap.removeLayer(lastFiveConditionLayer);
 	}
 	if(!mymap.hasLayer(assetLayer)){
-		setUpPointClick();
+		setMapClickEvent();
 	}
 }
 
@@ -188,7 +188,7 @@ function removeMissingCondition() {
 		mymap.removeLayer(missingConditionLayer);
 	}
 	if(!mymap.hasLayer(assetLayer)){
-		setUpPointClick();
+		setMapClickEvent();
 	}
 }
 
