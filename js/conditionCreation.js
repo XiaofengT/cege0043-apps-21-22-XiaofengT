@@ -3,6 +3,7 @@ function checkCondition(data) {
 	var previousConditionValue = document.getElementById("previousConditionValue_"+data).innerHTML;
 	var postString = "asset_name="+asset_name;
 	
+	try{
 	if (document.getElementById(data+"_1").checked) {
 		postString = postString + "&condition_description=Element is in very good condition"
 		conditionValue = "Element is in very good condition";
@@ -29,6 +30,10 @@ function checkCondition(data) {
 	else{
 		conditionProcessData(postString);
 		document.getElementById("previousConditionValue_"+data).value = conditionValue;
+	}
+	}
+	catch(err){
+		alert('Please select a condition description!')
 	}
 }
 
