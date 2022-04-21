@@ -168,6 +168,7 @@ function setUpReadOnlyClick() {
 	var assetURL = baseComputerAddress + dataAddress;
 	$.ajax({url: assetURL, 
 			dataType: 'json', 
+			async: false,
 			success: function(result){
 				var conditionMarker1 = L.AwesomeMarkers.icon({
 					icon: 'play',
