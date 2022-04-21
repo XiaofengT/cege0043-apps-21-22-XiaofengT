@@ -25,7 +25,7 @@
 		/* Create two columns/boxes that floats next to each other */
 		nav {
 		  float: left;
-		  width: 30%;
+		  width: 100%;
 		  background: #ccc;
 		  padding: 20px;
 		}
@@ -39,7 +39,7 @@
 		article {
 		  float: left;
 		  padding: 20px;
-		  width: 70%;
+		  width: 100%;
 		  background-color: #f1f1f1;
 		}
 
@@ -68,11 +68,17 @@
 		</style>
 	</head>
 	<body>
-		<header><h2>Condition Survey Application User Guide</h2></header>
+		<button onclick="document.location='bootStrap.html'">Back to the map</button>
+		<header>
+			<h2>Condition Survey Application User Guide</h2>
+		</header>
 		<section>
 		  <nav>
 			<ul>
 			  <li><a href="#C1">Introduction</a></li>
+			  <li><a href="#C2">Description of asset conditions</a></li>
+			  <li><a href="#C3">Set asset conditions</a></li>
+			  <li><a href="#C4">Menu options</a></li>
 			</ul>
 		  </nav>
 		  
@@ -81,11 +87,11 @@
 			<p>This application will help you to manage your assets. You can make changes to the condition of your assets at any time.</p>
 		  </article>
 		
-		  <nav>
-			<ul>
-			  <li><a href="#C2">Description of asset conditions</a></li>
-			</ul>
-		  </nav>
+		  <!-- <nav> -->
+			<!-- <ul> -->
+			  <!-- <li><a href="#C2">Description of asset conditions</a></li> -->
+			<!-- </ul> -->
+		  <!-- </nav> -->
 		  
 		  <article>
 			<h2 id="C2">Description of asset conditions</h2>
@@ -98,11 +104,11 @@
 			<p>Assets that are missing condition tags will be displayed as <i style="color: gray;">No Condition Captured</i>.</p>
 		   </article>
 		   
-		   <nav>
-			<ul>
-			  <li><a href="#C3">Set asset conditions</a></li>
-			</ul>
-		  </nav>
+		   <!-- <nav> -->
+			<!-- <ul> -->
+			  <!-- <li><a href="#C3">Set asset conditions</a></li> -->
+			<!-- </ul> -->
+		  <!-- </nav> -->
 		  
 		  <article>
 			<h2 id="C3">Set asset conditions</h2>
@@ -112,35 +118,36 @@
 			<p>The selection will be saved to the database after you click the <span style="border: 1px solid black; background-color:#E4E4E4;">Save condition information</span> button. 
 			You will be told how many report you have submitted as an alert popup</p>
 			<p>You can also delete information you have saved by entering the id of the asset condition. 
-			Click on the <mark style="color:gray;">Delete Condition</mark> button and it will automatically delete the specified asset condition.</p>
+			Click on the <span style="border: 1px solid black; background-color:#E4E4E4;">Delete Condition</span> button and it will automatically delete the specified asset condition.</p>
 		   </article>
 		   
-		   <nav>
-			<ul>
-			  <li><a href="#C4">Menu options</a></li>
-			</ul>
-		  </nav>
+		   <!-- <nav> -->
+			<!-- <ul> -->
+			  <!-- <li><a href="#C4">Menu options</a></li> -->
+			<!-- </ul> -->
+		  <!-- </nav> -->
 		  
 		  <article>
 			<h2 id="C4">Menu options</h2>
 			<p>The app also provides you with a number of functions as menu options so that you can view information about some of your assets.</p>
-			<h3>&#10095; Help</h3>
+			<h4>&#10095; Help</h4>
 			<p>When you click on this menu option, you will be redirected to the Condition Survey Application User Guide page.</p>
-			<h3>&#10095; User Ranking</h3>
+			<h4>&#10095; User Ranking</h4>
 			<p>When you click on this menu option, you will be given a ranking information based on you number of condition reports created.</p>
-			<h3>&#10095; Add Layer - 5 closest assets</h3>
+			<h4>&#10095; Add Layer - 5 closest assets</h4>
 			<p>When you click on this menu option, the map will show you the 5 assets closest to your current location in the entire database.</p>
-			<h3>&#10095; Remove Layer - 5 closest assets</h3>
+			<h4>&#10095; Remove Layer - 5 closest assets</h4>
 			<p>When you click on this menu option, the 5 closest assets will be removed from the map.</p>
-			<h3>&#10095; Add Layer - last 5 reports</h3>
+			<h4>&#10095; Add Layer - last 5 reports</h4>
 			<p>When you click on this menu option, the map will show you the assets with the last 5 reports created by yourself.</p>
-			<h3>&#10095; Remove Layer - last 5 reports</h3>
+			<h4>&#10095; Remove Layer - last 5 reports</h4>
 			<p>When you click on this menu option, the last 5 reported asset will be removed from the map.</p>
-			<h3>&#10095; Add Layer - not rated in the last 3 days</h3>
+			<h4>&#10095; Add Layer - not rated in the last 3 days</h4>
 			<p>When you click on this menu option, the map will show you the assets that hasn't rated in the last 3 days.</p>
-			<h3>&#10095; Remove Layer - not rated in the last 3 days</h3>
+			<h4>&#10095; Remove Layer - not rated in the last 3 days</h4>
 			<p>When you click on this menu option, the assets that hasn't rated in the last 3 days will be removed from the map.</p>
 		   </article>
+		   <button onclick="document.location='bootStrap.html'">Back to the map</button>
 		</section>
 		
 	</body>

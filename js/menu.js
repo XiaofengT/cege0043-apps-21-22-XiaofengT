@@ -387,15 +387,3 @@ function createDataTable(){
 function closeTable() {
 	document.getElementById("tablediv").style.top = "-9999px";
 }
-
-function help() {
-	document.getElementById("helpdiv").style.top="15%";
-	var widtha = document.getElementById("helpdiv").offsetWidth;
-	var heighta = document.getElementById("helpdiv").offsetHeight;
-	// keep the existing HTML as there is a button that is needed
-	//document.getElementById("helpdiv").innerHTML=document.getElementById("helpdiv").innerHTML+'<div class="h-75 w-75"><svg width="'+widtha+'" height="'+heighta+'" id="svg1"></svg></div>'
-	var helpHTML = "<h1>Condition Survey Application User Guide</h1><br/>";
-	helpHTML += ""
-	document.getElementById("helpdiv").innerHTML = helpHTML;
-	
-} 
