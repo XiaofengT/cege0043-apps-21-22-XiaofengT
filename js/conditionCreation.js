@@ -23,7 +23,7 @@ function checkCondition(data) {
 		postString = postString + "&condition_description=Not working and needs immediate, urgent maintenance"
 		conditionValue = "Not working and needs immediate, urgent maintenance";
 	}
-	else if (conditionValue == previousConditionValue) {
+	if (conditionValue == previousConditionValue) {
 		alert("The condition value already exist!");
 	}
 	else{
