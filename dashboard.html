@@ -8,8 +8,13 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://cdn.anychart.com/releases/v8/js/anychart-core.min.js"></script>
+	<script src="https://cdn.anychart.com/releases/v8/js/anychart-cartesian.min.js"></script>
+
 	<script src="Build/Cesium/Cesium.js"></script>
 	<script src="js/cesiumLayer.js"></script>
+	<script src="js/assetsGraph.js"></script>
 	<style>
 	  @import url(Build/Cesium/Widgets/widgets.css);
 	  html, body, #cesiumContainer {
@@ -116,16 +121,15 @@
     </nav>
 
     <div class="home-content">
-      <div class="overview-boxes">
+      <div class="cesium-box">
 		<div class="title">3D Cesium View</div>
         <div id="cesiumContainer"></div>
       </div>
 
       <div class="sales-boxes">
         <div class="recent-sales box">
-          <div class="title">Recent Sales</div>
-          <div class="sales-details">
-            <div id="graphWrapper" class="h-75 w-75 d-flex flex-column" style="background-color: white; display: inlineblock;position:absolute; top:-9999;left:15%;"></div>
+          <div class="title">Asset Statistics Bar Graph</div>
+            <div id="graphWrapper"></div>
           </div>
         </div>
         <div class="top-sales box">

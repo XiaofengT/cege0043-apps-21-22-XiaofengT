@@ -176,7 +176,7 @@ nav .profile-details i{
   position: relative;
   padding-top: 104px;
 }
-.home-content .overview-boxes{
+.home-content .cesium-box{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -184,7 +184,7 @@ nav .profile-details i{
   padding: 0 20px;
   margin-bottom: 26px;
 }
-.overview-boxes .box{
+.cesium-box .box{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -194,7 +194,7 @@ nav .profile-details i{
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
-.overview-boxes .box-topic{
+.home-content .cesium-box .title{
   font-size: 20px;
   font-weight: 500;
 }
