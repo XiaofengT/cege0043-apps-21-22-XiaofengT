@@ -18,7 +18,6 @@ function showAssetsGraph(){
 		for (var i=0; i<data.length; i++){
 			asset_names[i] = data[i]["properties"]["asset_name"];
 			condition_values[i] = condition_dictionary[data[i]["properties"]["condition_description"]];
-			//chartData[i] = [asset_names[i], condition_values[i]];
 		}
 		new Chart(document.getElementById("graphWrapper"), {
 			type: "bar",

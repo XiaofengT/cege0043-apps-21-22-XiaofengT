@@ -192,20 +192,21 @@ nav .profile-details i{
   font-size: 24px;
   font-weight: 500;
 }
-
+.home-content .graph-boxes{
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 20px; */
+}
 /* left box */
 .home-content .graph-boxes .bar-graph{
-  display: flex;
-  height: 400px;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  width: 65%;
   background: #fff;
   padding: 20px 30px;
   margin: 26px 20px;
-  padding-bottom: 50px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  height: 400px;
+  padding-bottom: 50px;
 }
 .graph-boxes .box .title{
   font-size: 24px;
@@ -215,13 +216,10 @@ nav .profile-details i{
 
 /* Right box */
 .home-content .graph-boxes .top-sales{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  width: 35%;
   background: #fff;
   padding: 20px 30px;
-  margin: 26px 20px;
+  margin: 26px 20px 0 0;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
@@ -230,7 +228,7 @@ nav .profile-details i{
   width: 35%;
   background: #fff;
   padding: 20px 30px;
-  margin: 0px auto;
+  margin: 0px 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
