@@ -227,14 +227,10 @@ nav .profile-details i{
 }
 
 .home-content .ranking-list .top-list{
-  width: 50%;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  width: 35%;
   background: #fff;
   padding: 20px 30px;
-  margin: 26px 20px;
-  padding-bottom: 50px;
+  margin: 0px auto;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
