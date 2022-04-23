@@ -40,13 +40,13 @@
           </a>
         </li>
         <li>
-          <a href="#cesiumContainer">
+          <a href="#cesiumBox">
             <i class='bx bx-box' ></i>
             <span class="links_name">Product</span>
           </a>
         </li>
         <li>
-          <a href="#graphWrapper">
+          <a href="#barGraph">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">Order list</span>
           </a>
@@ -69,32 +69,27 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Dashboard</span>
-      </div>
-      <div class="search-box">
-        <input type="text" placeholder="Search...">
-        <i class='bx bx-search' ></i>
+        <span class="dashboard">Asset Management Dashboard</span>
       </div>
       <div class="profile-details">
         <img src="images/profile.jpg" alt="">
-        <span class="admin_name">Prem Shahi</span>
-        <i class='bx bx-chevron-down' ></i>
+        <span class="admin_name">XiaofengT</span>
       </div>
     </nav>
 
     <div class="home-content">
-      <div class="cesium-box">
+      <div class="cesium-box" id="cesiumBox">
 		<div class="title">3D Cesium View</div>
         <div id="cesiumContainer"></div>
       </div>
 
       <div class="graph-boxes">
-        <div class="bar-graph box">
+        <div class="bar-graph box" id="barGraph">
           <div class="title">Asset Statistics Bar Graph</div>
             <canvas id="graphWrapper"></canvas>
           </div>
         <div class="top-sales box">
-			<div class="title">Condition Statistics</div>
+			<div class="title">Condition Value</div>
 			<div class="legend">
 				1: Element is in very good condition </br>
 				2: Some aesthetic defects, needs minor repair</br> 
