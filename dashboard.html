@@ -12,7 +12,8 @@
 
 	<script src="Build/Cesium/Cesium.js"></script>
 	<script src="js/cesiumLayer.js"></script>
-	<script src="js/assetsGraph.js"></script>
+	<script src="js/assetsGraph.js"></script>	
+	<script src="js/otherVisual.js"></script>
 	<style>
 	  @import url(Build/Cesium/Widgets/widgets.css);
 	  html, body, #cesiumContainer {
@@ -100,6 +101,12 @@
 			</div>
 		</div>
       </div>
+	  <div class="ranking-list">
+		<div class="top-list box">
+		 <div class="title">Top 5 Scorers</div>
+         <div class="top-list" id="rankingTable"></div>
+		</div>
+      </div>
     </div>	
   </section>
   
@@ -141,7 +148,8 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
 document.addEventListener('DOMContentLoaded', function() {
    getUserId();
    loadVectorLayer();
-   showAssetsGraph()
+   showAssetsGraph();
+   rankTable();
 }, false);
 
  
