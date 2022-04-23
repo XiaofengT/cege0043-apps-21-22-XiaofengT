@@ -265,23 +265,18 @@ nav .profile-details i{
 
 /* left box */
 .home-content .graph-boxes .bar-graph{
-  width: 70%;
-  height: 500px;
+  width: 50%;
+  height: 400px;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.home-content .graph-boxes .sales-details{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 .graph-boxes .box .title{
   font-size: 24px;
   font-weight: 500;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
 }
 .graph-boxes .sales-details li.topic{
   font-size: 20px;
