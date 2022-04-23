@@ -261,7 +261,8 @@ nav .profile-details i{
 
 /* left box */
 .home-content .graph-boxes .bar-graph{
-  width: 65%;
+  width: 50%;
+  height: 70%;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px;
@@ -313,7 +314,7 @@ nav .profile-details i{
 
 /* Right box */
 .home-content .sales-boxes .top-sales{
-  width: 35%;
+  width: 50%;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px 0 0;
@@ -385,7 +386,7 @@ nav .profile-details i{
   }
 }
 @media (max-width: 1000px) {
-  .overview-boxes .box{
+  .cesium-box .box{
     width: calc(100% / 2 - 15px);
     margin-bottom: 15px;
   }
@@ -405,7 +406,7 @@ nav .profile-details i{
   }
 }
 @media (max-width: 550px) {
-  .overview-boxes .box{
+  .cesium-box .box{
     width: 100%;
     margin-bottom: 15px;
   }
