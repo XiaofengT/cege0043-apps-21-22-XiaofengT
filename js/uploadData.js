@@ -298,14 +298,14 @@ function closestAssetPoint(userlat, userlng) {
 	// go through each point one by one
 	// and measure the distance to Warren Street
 	// for the closest point show the pop up of that point
-	var minDistance = 100000000000;
+	var minDistance = 0.2;
 	var closestPoint = 0;
 	assetLayer.eachLayer(function(layer) {
 	var distance = calculateDistance(userlat,
 		userlng,layer.getLatLng().lat, layer.getLatLng().lng, 'K');
 		if (distance < minDistance){
 			minDistance = distance;
-			closestPoint = layer.feature.properties.id;
+			closestPoint = layer.feature.properties.asset_id;
 		}
 	});
 	// for this to be a proximity alert, the minDistance must be 
@@ -313,7 +313,7 @@ function closestAssetPoint(userlat, userlng) {
 	// using an if statement
 	// show the popup for the closest point
 	assetLayer.eachLayer(function(layer) {
-		if (layer.feature.properties.id == closestPoint){
+		if (layer.feature.properties.asset_id == closestPoint){
 			layer.openPopup();
 		}
 	});
