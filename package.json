@@ -4,6 +4,7 @@
   "description": "Basic starter code for UCL module CEGE0043 app development - includes a basic HTTP server and one end point",
   "main": "app.js",
   "dependencies": {
+    "chart.js": "^3.7.1",
     "express": "^4.17.3"
   },
   "devDependencies": {},

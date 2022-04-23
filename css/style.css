@@ -199,7 +199,7 @@ nav .profile-details i{
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 .home-content .cesium-box .title{
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 }
 .home-content .box .number{
@@ -265,8 +265,8 @@ nav .profile-details i{
 
 /* left box */
 .home-content .graph-boxes .bar-graph{
-  width: 50%;
-  height: 70%;
+  width: 70%;
+  height: 500px;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px;
@@ -318,7 +318,7 @@ nav .profile-details i{
 
 /* Right box */
 .home-content .sales-boxes .top-sales{
-  width: 50%;
+  width: 30%;
   background: #fff;
   padding: 20px 30px;
   margin: 0 20px 0 0;
