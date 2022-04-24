@@ -18,7 +18,7 @@ var description = ["Element is in very good condition",
                   "Not working and maintenance must be done as soon as reasonably possible", 
                   "Not working and needs immediate, urgent maintenance", 
                   "Unknown"];
-var barColor = ["blue", "green", "yellow", "orage", "red", "gray"];
+var barColor = ["blue", "green", "yellow", "orange", "red", "gray"];
 var condition_count = [0,0,0,0,0,0];
 function showPieChart(){
 	var baseComputerAddress = document.location.origin;

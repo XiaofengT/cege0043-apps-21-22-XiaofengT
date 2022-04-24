@@ -30,38 +30,38 @@
 <body>
   <div class="sidebar">
     <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">CodingLab</span>
+      <i class='bx bxs-dashboard'></i>
+      <span class="logo_name">Dashboard</span>
     </div>
       <ul class="nav-links">
         <li>
           <a href="#cesiumBox" class="active">
-            <i class='bx bxs-planet'></i>
+            <i class='bx bx-planet' ></i>
             <span class="links_name">3D Cesium</span>
           </a>
         </li>
         <li>
-          <a href="#">
-            <i class='bx bx-box' ></i>
-            <span class="links_name">Product</span>
-          </a>
-        </li>
-        <li>
           <a href="#barGraph">
-            <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Order list</span>
+            <i class='bx bx-bar-chart-alt-2'></i>
+            <span class="links_name">Asset Statistics</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="#pieChart">
             <i class='bx bx-pie-chart-alt-2' ></i>
-            <span class="links_name">Analytics</span>
+            <span class="links_name">Condition Percentage</span>
+          </a>
+        </li>
+		<li>
+          <a href="#" onclick="document.location='bootStrap.html'">
+            <i class='bx bx-map'></i>
+            <span class="links_name">Manage Your Asset</span>
           </a>
         </li>
         <li>
-          <a href="#">
-            <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Stock</span>
+          <a href="#" onclick="document.location='helpPage.html'">
+            <i class='bx bx-help-circle'></i>
+            <span class="links_name">Help</span>
           </a>
         </li>
       </ul>
@@ -106,7 +106,7 @@
 		 <div class="title">&#127942; Top 5 Scorers</div>
          <div class="card-body d-flex" id="rankingTable"></div>
 		</div>
-		<div class="pie-chart box">
+		<div class="pie-chart box" id="pieChart">
 		 <div class="title">&#127849; Condition Percentage</div>
           <canvas id="percentageGraph"></canvas>
 		</div>
