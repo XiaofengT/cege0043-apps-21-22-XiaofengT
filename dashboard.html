@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsiive Admin Dashboard | CodingLab </title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+	<script src="Build/Cesium/Cesium.js"></script>
+	<script src="js/cesiumLayer.js"></script>
+	<script src="js/assetsGraph.js"></script>	
+	<script src="js/otherVisual.js"></script>
+	<style>
+	  @import url(Build/Cesium/Widgets/widgets.css);
+	  html, body, #cesiumContainer {
+		  width: 100%; height: 100%; margin: 0; padding: 0; overflow: auto;
+	  }
+		   .toolbar-left {
+			display: block;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+		}
+	</style>
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxs-dashboard'></i>
+      <span class="logo_name">Dashboard</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#cesiumBox" class="active">
+            <i class='bx bx-planet' ></i>
+            <span class="links_name">3D Cesium</span>
+          </a>
+        </li>
+        <li>
+          <a href="#barGraph">
+            <i class='bx bx-bar-chart-alt-2'></i>
+            <span class="links_name">Asset Statistics</span>
+          </a>
+        </li>
+        <li>
+          <a href="#pieChart">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Condition Percentage</span>
+          </a>
+        </li>
+		<li>
+          <a href="#" onclick="document.location='bootStrap.html'">
+            <i class='bx bx-map'></i>
+            <span class="links_name">Manage Your Assets</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="document.location='helpPage.html'">
+            <i class='bx bx-help-circle'></i>
+            <span class="links_name">Help</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Asset Management Dashboard</span>
+      </div>
+      <div class="profile-details">
+        <img src="images/profile.jpg" alt="">
+        <span class="admin_name">XiaofengT</span>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="cesium-box" id="cesiumBox">
+		<div class="title">&#127757; 3D Cesium View</div>
+        <div id="cesiumContainer"></div>
+      </div>
+
+      <div class="graph-boxes">
+        <div class="bar-graph box" id="barGraph">
+          <div class="title">&#128202; Asset Statistics Bar Graph</div>
+            <canvas id="graphWrapper"></canvas>
+          </div>
+        <div class="condition-value box">
+			<div class="title">Condition Value</div>
+			<div class="legend">
+				1: Element is in very good condition </br>
+				2: Some aesthetic defects, needs minor repair</br> 
+				3: Functional degradation of some parts, needs maintenance</br>
+				4: Not working and maintenance must be done as soon as reasonably possible</br> 
+				5: Not working and needs immediate, urgent maintenance</br>
+              	6: Unknown
+			</div>
+		</div>
+      </div>
+	  <div class="ranking-list">
+		<div class="top-list box">
+		 <div class="title">&#127942; Top 5 Scorers</div>
+         <div class="card-body d-flex" id="rankingTable"></div>
+		</div>
+		<div class="pie-chart box" id="pieChart">
+		 <div class="title">&#127849; Condition Percentage</div>
+          <canvas id="percentageGraph"></canvas>
+		</div>
+      </div>
+    </div>	
+  </section>
+  
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script> 
+
+  <script>
+  Cesium.Ion.defaultAccessToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NmQ2NmVmNy0zZGY4LTQ1ZDAtYmUwOC03MjkzM2JjNzQ2OTQiLCJpZCI6MTU2NjMsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1Njg1MjQwNTl9.siDvMt3fH91XzE39FU_xqVrx-i6M1wWOBl_2vCrY6Xo';
+
+Cesium.Ion.defaultAccessToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NmQ2NmVmNy0zZGY4LTQ1ZDAtYmUwOC03MjkzM2JjNzQ2OTQiLCJpZCI6MTU2NjMsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1Njg1MjQwNTl9.siDvMt3fH91XzE39FU_xqVrx-i6M1wWOBl_2vCrY6Xo';
+
+var imageryProviders = Cesium.createDefaultImageryProviderViewModels();
+var selectedImageryProviderIndex = 7;  // MapBox Street is 5th in the list.
+
+var viewer = new Cesium.Viewer('cesiumContainer', {
+    imageryProviderViewModels: imageryProviders,
+    selectedImageryProviderViewModel: imageryProviders[selectedImageryProviderIndex]
+});
+
+
+// only load the layer when the cesium basemap has been created
+document.addEventListener('DOMContentLoaded', function() {
+   getUserId();
+   loadVectorLayer();
+   showAssetsGraph();
+   rankTable();
+   showPieChart();
+}, false);
+
+ 
+ </script>
+
+
+</html>
