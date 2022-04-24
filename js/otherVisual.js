@@ -12,19 +12,18 @@ function rankTable(){
 		document.getElementById("rankingTable").innerHTML = tableHTML;
 	}})
 }
-
-function showPieChart(){
-	var baseComputerAddress = document.location.origin;
-	var getAssetsString = "/api/geoJSONUserId/" + user_id;
-	var getReportURL = baseComputerAddress + getAssetsString;
-	var description = ["Element is in very good condition", 
+var description = ["Element is in very good condition", 
                   "Some aesthetic defects, needs minor repair", 
                   "Functional degradation of some parts, needs maintenance", 
                   "Not working and maintenance must be done as soon as reasonably possible", 
                   "Not working and needs immediate, urgent maintenance", 
                   "Unknown"];
-	var barColor = ["blue", "green", "yellow", "orage", "red", "gray"];
-	var condition_count = [0,0,0,0,0,0];
+var barColor = ["blue", "green", "yellow", "orage", "red", "gray"];
+var condition_count = [0,0,0,0,0,0];
+function showPieChart(){
+	var baseComputerAddress = document.location.origin;
+	var getAssetsString = "/api/geoJSONUserId/" + user_id;
+	var getReportURL = baseComputerAddress + getAssetsString;
 	$.ajax({url: getReportURL, crossDomain: true, async: false, success: function(result){
 		data = result[0]["features"];
 		for (var i=0; i<data.length; i++){
