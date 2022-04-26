@@ -298,7 +298,7 @@ function closestAssetPoint(userlat, userlng) {
 	// go through each point one by one
 	// and measure the distance to Warren Street
 	// for the closest point show the pop up of that point
-	var minDistance = 0.2;
+	var minDistance = 100000000000;
 	var closestPoint = 0;
 	assetLayer.eachLayer(function(layer) {
 	var distance = calculateDistance(userlat,
