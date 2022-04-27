@@ -21,7 +21,6 @@ function saveNewAsset() {
 
 function deleteSingleAsset() {
 	var deleteID = document.getElementById("deleteID").value;
-	console.log(deleteID);
 	var deleteString = "id="+deleteID;
 	var serviceUrl= document.location.origin + "/api/deleteAsset";
 	$.ajax({
@@ -45,7 +44,7 @@ function assetProcessData(postString) {
     crossDomain: true,
     type: "POST",
     data: postString,
-    success: function(data){console.log(data); assetDataUploaded(data);}
+    success: function(data){assetDataUploaded(data);}
 
 }); 
 }

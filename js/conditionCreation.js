@@ -46,7 +46,7 @@ function conditionProcessData(postString) {
     crossDomain: true,
     type: "POST",
     data: postString,
-    success: function(data){console.log(data); conditionDataUploaded(data);}
+    success: function(data){conditionDataUploaded(data);}
 
 }); 
 }
