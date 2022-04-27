@@ -50,8 +50,6 @@ function showPieChart(){
 				condition_count[6] += 1;
 			}
 		}
-		console.log(condition_count);
-		console.log(description);
 		new Chart(document.getElementById("percentageGraph"), {
 			type: "doughnut",
 			data: {
