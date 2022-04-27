@@ -58,18 +58,21 @@ function getUserId() {
 
 function trackLocation(){
 	if(navigator.geolocation){
+		// Monitor the user's location in real time with watchPosition
 		geoLocationID = navigator.geolocation.watchPosition(showPosition);
 	}else{
+		// Prevent application errors when the location permission is disabled in the browser
 		alert("Geolocation is not supported by this browser.");
 	}
 }
 function showPosition(position){
+	// Remove the previous location before updating the user location
 	removePositionPoints();
-	//add the new point into the array
+	// add the new point into the array
 	var userlat = position.coords.latitude;
 	var userlng = position.coords.longitude;
 	trackLocationLayer.push(L.marker([userlat,userlng]).addTo(mymap));
-	console.log(assetLayer);
+	// Load the form at the point closest to the user's location
 	closestAssetPoint(userlat, userlng);
 }
 
@@ -78,7 +81,6 @@ function removePositionPoints(){
 	// disable the location tracking so that a new point won't be added while you are removing the old points
 	navigator.geolocation.clearWatch(geoLocationID);
 	for(var i=trackLocationLayer.length-1; i>-1; i--){
-		console.log("removing point"+i+"which has coordinates"+trackLocationLayer[i].getLatLng());
 		mymap.removeLayer(trackLocationLayer[i])
 	}
 }
@@ -298,7 +300,7 @@ function closestAssetPoint(userlat, userlng) {
 	// go through each point one by one
 	// and measure the distance to Warren Street
 	// for the closest point show the pop up of that point
-	var minDistance = 0.2;
+	var minDistance = 100000000000;
 	var closestPoint = 0;
 	assetLayer.eachLayer(function(layer) {
 	var distance = calculateDistance(userlat,

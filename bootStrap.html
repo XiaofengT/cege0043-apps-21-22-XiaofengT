@@ -195,8 +195,6 @@
 	  class="close" aria-label="Close" onclick="closeGraph();">Close Graph</button></div>
 	  <div id="tablediv" class="h-75 w-75 d-flex flex-column"
 	  style="background-color: white; display: inlineblock;position:absolute; top:-9999;left:15%;"></div>
-	  <div id="helpdiv" class="h-75 w-75 d-flex flex-column"
-	  style="background-color: white; display: inlineblock;position:absolute; top:-9999;left:15%;"></div>
     </div>
     <!-- end of wrapper -->
 	
@@ -207,7 +205,7 @@
 
 <script>
 function loadMap() {
-	// map loading code goes here
+	// getUserId() should goes before other functions
 	getUserId();
 	loadLeafletMap();
 	setMapClickEvent();
