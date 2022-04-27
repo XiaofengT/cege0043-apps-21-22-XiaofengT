@@ -5,21 +5,26 @@ function getUserRanking(){
 		crossDomain: true,
 		success: function(result){
 			alert("Your ranking of total number of condition reports in comparison to all users is: " + 
+			// read the value of rank key of the result JSON.
 			result[0]["array_to_json"][0]["rank"] + ".");
 		}
 	}); 
 }
 
+// setting ':latitude/:longitude' as a global variable
 var latlngString;
 var fiveClosestAssetsLayer;
 function fiveClosestAssetsLocation(){
+	// Check if the layer already exists, and remove it if it does
 	if(mymap.hasLayer(fiveClosestAssetsLayer)){
 		mymap.removeLayer(fiveClosestAssetsLayer);
 	}
+	// Check if an asset layer exists, and remove it if so
 	if(mymap.hasLayer(assetLayer)){
 		mymap.removeLayer(assetLayer);
 	}
 	if(navigator.geolocation){
+	// GetCurrentPosition retrieves the user's current position and returns latitude and longitude
 	navigator.geolocation.getCurrentPosition(function(position){
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
@@ -27,6 +32,7 @@ function fiveClosestAssetsLocation(){
 		fiveClosestAssetsdata();
 	});
 	}else{
+		// Prevent application errors when the location permission is disabled in the browser
 		alert("Geolocation is not supported by this browser.");
 	}
 }
@@ -35,11 +41,12 @@ function fiveClosestAssetsdata() {
 	var fiveClosestURL = document.location.origin + '/api/fiveClosestAssets/' + latlngString;
 	$.ajax({url: fiveClosestURL, 
 			dataType: 'json', 
+			// Make ajax requests synchronous
 			async: false,
 			success: function(result){
 				var conditionMarker = L.AwesomeMarkers.icon({
 					icon: 'play',
-					markerColor: 'yellow'
+					markerColor: 'orange'
 				});
 				fiveClosestAssetsLayer = L.geoJson(
 								result,{
@@ -50,6 +57,7 @@ function fiveClosestAssetsdata() {
 								}
 								).addTo(mymap); 
 			fiveClosestAssetsLayer.addData(result);
+			// Zoom in with the loaded layer range
 			mymap.fitBounds(fiveClosestAssetsLayer.getBounds());
 			}
 	});
@@ -59,6 +67,7 @@ function removeFiveClosestAssets() {
 	if(mymap.hasLayer(fiveClosestAssetsLayer)){
 		mymap.removeLayer(fiveClosestAssetsLayer);
 	}
+	// Check if there is an asset layer and run setMapClickEvent() if there is none
 	if(!mymap.hasLayer(assetLayer)){
 		setMapClickEvent();
 	}
@@ -67,9 +76,11 @@ function removeFiveClosestAssets() {
 
 var lastFiveConditionLayer;
 function lastFiveConditionLocation(){
+	// Check if the layer already exists, and remove it if it does
 	if(mymap.hasLayer(lastFiveConditionLayer)){
 		mymap.removeLayer(lastFiveConditionLayer);
 	}
+	// Check if an asset layer exists, and remove it if so
 	if(mymap.hasLayer(assetLayer)){
 		mymap.removeLayer(assetLayer);
 	}
@@ -133,6 +144,7 @@ function lastFiveConditionData() {
 								}
 								).addTo(mymap); 
 			lastFiveConditionLayer.addData(result);
+			// Zoom in with the loaded layer range
 			mymap.fitBounds(lastFiveConditionLayer.getBounds());
 			}
 	});
@@ -267,14 +279,6 @@ function showReportGraph() {
 			.attr("y", d => y(d.reports_not_working))
 			.attr("width", x.bandwidth())
 			.attr("height", d => height - y(d.reports_not_working));
-		// .catch(err => {
-		// svg.append("text")         
-			// .attr("y", 20)
-			// .attr("text-anchor", "left")  
-			// .style("font-size", "20px") 
-			// .style("font-weight", "bold")  
-			// .text(`Couldn't open the data file: "${err}".`);
-		// });
 	}});
 }
 
